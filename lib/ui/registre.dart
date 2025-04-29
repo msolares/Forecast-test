@@ -7,28 +7,27 @@ import 'package:wheathertest/components/flag-selector/BuildFlagSelector.dart';
 import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
 import 'package:wheathertest/domain/user/login.dart';
-import 'package:wheathertest/ui/registre.dart';
 import 'package:wheathertest/ui/wather-list.dart';
 import 'package:wheathertest/util/navegacion/Navegacion.dart';
 import '../bloc/user/user_state.dart';
 import '../generated/l10n.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegistrePage extends StatefulWidget {
+  const RegistrePage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegistrePage> createState() => _RegistrePageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegistrePageState extends State<RegistrePage> {
   UserBloc _userBloc = Injector.appInstance.get<UserBloc>();
   bool _loading = false;
 
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  void _login() {
-    _userBloc.add(loginEvent(Login(password: _passwordController.text, user: _usernameController.text)));
+  void _reg() {
+    _userBloc.add(registreEvent(Login(password: _passwordController.text, user: _usernameController.text)));
   }
 
   @override
@@ -45,12 +44,14 @@ class _LoginPageState extends State<LoginPage> {
                   _loading = true;
                 });
               },
-              loginState: (login){
-                if (login.StatusCode == 200 || login.StatusCode == 201){
-                  Navegacion().goTo(context, WeatherTabView());
+              loginState: (login){},
+              registreState: (registre) {
+                if(registre){
+                  Navegacion().Back(context);
+                }else{
+                  //todo pop up para aviso. o caso de uso en caso de que falle el registro que toque.
                 }
-              },
-              registreState: (registre) {}
+              }
               );
         },
         child: Scaffold(
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                 BuildFlagSeletor(),
                 const SizedBox(height: 100),
                 Text(
-                  s.login,
+                  s.registro,
                   style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -85,12 +86,12 @@ class _LoginPageState extends State<LoginPage> {
                 BuildTextField(
                     controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? "la contraseña es requerida" : null,),
                 const SizedBox(height: 30),
-                ElevatedButtonWidget(s.button, _login),
+                ElevatedButtonWidget(s.button, _reg),
                 const SizedBox(height: 30,),
                 InkWell(
-                  onTap: () => Navegacion().goTo(context, RegistrePage()),
+                  onTap: () => Navegacion().Back(context),
                   child: Text(
-                    s.aunnotienescuenta,
+                    s.yatinescuenta,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w300,

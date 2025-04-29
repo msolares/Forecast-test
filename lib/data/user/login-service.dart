@@ -1,24 +1,33 @@
 import 'package:wheathertest/domain/user/login-response.dart';
+import '../../DataBase.dart';
 import '../../domain/user/login.dart';
 import '../ApiClientInterfaz.dart';
 
 class LoginService {
   final ApiClient apiClient;
+
   LoginService(this.apiClient);
 
-  Future<LoginResponse> login(Login login) async{
+  Future<LoginResponse> marclogin(Login login) async {
     var headers = {
       'Content-Type': 'application/json',
     };
 
-    //Todo, habria que llamar al post de login para obtener respuesta de un servidor.
-    //final response = await apiClient.post('${Entorno.Enviroment()}/login',  headers, );
+    /*Todo, habria que llamar al post de login para obtener respuesta de un servidor pero como no tengo un WS con login lo bamos a hacer con base de datos interna*/
 
-    //Lo vamos a hacer manualmente para simular un login.
-    if (login.user == "marcos" && login.password == "1234"){
-      return LoginResponse(StatusCode: 200, login: Login(password: "", user: "marcos"));
-    }else{
-      return LoginResponse(StatusCode: 400, login: Login(password: "", user: ""));
+    try {
+      final user = await Database.database.loginDao.getUserByUserAndPass(
+          login.user, login.password);
+      if (user != null) {
+        return LoginResponse(
+            StatusCode: 200, login: Login(password: "", user: user.username));
+      } else {
+        return LoginResponse(
+            StatusCode: 404, login: Login(password: "", user: ""));
+      }
+    } catch (e) {
+      return LoginResponse(
+          StatusCode: 400, login: Login(password: "", user: ""));
     }
   }
 }

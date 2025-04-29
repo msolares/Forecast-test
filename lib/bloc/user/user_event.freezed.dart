@@ -130,4 +130,80 @@ class _$loginEventCopyWithImpl<$Res> implements $loginEventCopyWith<$Res> {
   }
 }
 
+/// @nodoc
+
+class registreEvent implements UserEvent {
+  const registreEvent(this.login);
+
+  final Login login;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $registreEventCopyWith<registreEvent> get copyWith =>
+      _$registreEventCopyWithImpl<registreEvent>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is registreEvent &&
+            (identical(other.login, login) || other.login == login));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, login);
+
+  @override
+  String toString() {
+    return 'UserEvent.registreEvent(login: $login)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $registreEventCopyWith<$Res>
+    implements $UserEventCopyWith<$Res> {
+  factory $registreEventCopyWith(
+          registreEvent value, $Res Function(registreEvent) _then) =
+      _$registreEventCopyWithImpl;
+  @useResult
+  $Res call({Login login});
+
+  $LoginCopyWith<$Res> get login;
+}
+
+/// @nodoc
+class _$registreEventCopyWithImpl<$Res>
+    implements $registreEventCopyWith<$Res> {
+  _$registreEventCopyWithImpl(this._self, this._then);
+
+  final registreEvent _self;
+  final $Res Function(registreEvent) _then;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? login = null,
+  }) {
+    return _then(registreEvent(
+      null == login
+          ? _self.login
+          : login // ignore: cast_nullable_to_non_nullable
+              as Login,
+    ));
+  }
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginCopyWith<$Res> get login {
+    return $LoginCopyWith<$Res>(_self.login, (value) {
+      return _then(_self.copyWith(login: value));
+    });
+  }
+}
+
 // dart format on

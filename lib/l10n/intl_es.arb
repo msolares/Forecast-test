@@ -35,6 +35,9 @@
   "telefonoRequerido": "El teléfono es requerido",
   "telefonoInvalido": "Teléfono no válido",
   "enviar": "Enviar",
-  "a1" : "hola"
+  "aunnotienescuenta" : "¿Aun no tienes cuenta? Regístrate",
+  "registro" : "Registro",
+  "registrate" : "Regístrate",
+  "yatinescuenta" : "¿Ya tienes cuenta?, inicia sesión"
 
 }

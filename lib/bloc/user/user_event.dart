@@ -9,4 +9,5 @@ part 'user_event.freezed.dart';
 abstract class UserEvent with _$UserEvent {
   const factory UserEvent.initialEvent() = initialEvent;
   const factory UserEvent.loginEvent(Login login) = loginEvent;
+  const factory UserEvent.registreEvent(Login login) = registreEvent;
 }

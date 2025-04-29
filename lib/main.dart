@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:wheathertest/ui/contact.dart';
 import 'package:wheathertest/ui/login.dart';
+import 'DataBase.dart';
 import 'bloc/locale/locale_bloc.dart';
 import 'bloc/locale/locale_state.dart';
 import 'di/SetupDi.dart';
 import 'generated/l10n.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   setupDI();
+  await Database.init();
   runApp(
     BlocProvider(
       create: (context) => LocaleBloc(),
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
             useMaterial3: true,
           ),
-          home: const ContactFormPage(),
+          home: const LoginPage(),
         );
       },
     );

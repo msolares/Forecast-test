@@ -22,8 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "a1": MessageLookupByLibrary.simpleMessage("hola"),
     "aceptar": MessageLookupByLibrary.simpleMessage("OK"),
+    "aunnotienescuenta": MessageLookupByLibrary.simpleMessage(
+      "¿Aun no tienes cuenta? Regístrate",
+    ),
     "button": MessageLookupByLibrary.simpleMessage("Sign In"),
     "ciudad": MessageLookupByLibrary.simpleMessage("City"),
     "ciudadRequerida": MessageLookupByLibrary.simpleMessage("City is required"),
@@ -55,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "prevision_proximos_dias": MessageLookupByLibrary.simpleMessage(
       "Forecast for the next days",
     ),
+    "registrate": MessageLookupByLibrary.simpleMessage("Regístrate"),
+    "registro": MessageLookupByLibrary.simpleMessage("Registro"),
     "sabado": MessageLookupByLibrary.simpleMessage("Saturday"),
     "sensacion_termina": MessageLookupByLibrary.simpleMessage("Feels like"),
     "singapur": MessageLookupByLibrary.simpleMessage("Singapore"),
@@ -68,5 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "tokio": MessageLookupByLibrary.simpleMessage("Tokyo"),
     "username": MessageLookupByLibrary.simpleMessage("Username"),
     "viernes": MessageLookupByLibrary.simpleMessage("Friday"),
+    "yatinescuenta": MessageLookupByLibrary.simpleMessage(
+      "¿Ya tienes cuenta?, inicia sesión",
+    ),
   };
 }

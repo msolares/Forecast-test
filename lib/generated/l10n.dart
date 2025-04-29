@@ -300,9 +300,34 @@ class S {
     return Intl.message('Submit', name: 'enviar', desc: '', args: []);
   }
 
-  /// `hola`
-  String get a1 {
-    return Intl.message('hola', name: 'a1', desc: '', args: []);
+  /// `¿Aun no tienes cuenta? Regístrate`
+  String get aunnotienescuenta {
+    return Intl.message(
+      '¿Aun no tienes cuenta? Regístrate',
+      name: 'aunnotienescuenta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registro`
+  String get registro {
+    return Intl.message('Registro', name: 'registro', desc: '', args: []);
+  }
+
+  /// `Regístrate`
+  String get registrate {
+    return Intl.message('Regístrate', name: 'registrate', desc: '', args: []);
+  }
+
+  /// `¿Ya tienes cuenta?, inicia sesión`
+  String get yatinescuenta {
+    return Intl.message(
+      '¿Ya tienes cuenta?, inicia sesión',
+      name: 'yatinescuenta',
+      desc: '',
+      args: [],
+    );
   }
 }
 
