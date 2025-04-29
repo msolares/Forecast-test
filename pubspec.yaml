@@ -42,6 +42,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +60,8 @@ dev_dependencies:
   json_serializable: ^6.9.5
   scrollable_positioned_list: ^0.3.8
   flutter_vector_icons: ^2.0.0
+  flutter_localizations:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -74,6 +77,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/img/Roao.gif
+    - assets/flags/es.png
+    - assets/flags/us.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -101,3 +107,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

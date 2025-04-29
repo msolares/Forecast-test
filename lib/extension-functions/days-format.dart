@@ -1,3 +1,5 @@
+import '../generated/l10n.dart';
+
 extension StringToTime on String {
   String toDays() {
     try {
@@ -5,24 +7,24 @@ extension StringToTime on String {
       final dateNow = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0, 0, 0);
       final compare = dateTime.compareTo(dateNow);
       if (compare == 0){
-        return "Hoy";
+        return S.current.hoy;
       }else{
         final weekDay = dateTime.weekday;
         switch (weekDay) {
           case 1:
-            return "Lunes";
+            return S.current.lunes;
           case 2:
-            return "Martes";
+            return S.current.martes;
           case 3:
-            return "Miércoles";
+            return S.current.miercoles;
           case 4:
-            return "Jueves";
+            return S.current.jueves;
           case 5:
-            return "Viernes";
+            return S.current.viernes;
           case 6:
-            return "Sábado";
+            return S.current.sabado;
           case 7:
-            return "Domingo";
+            return S.current.domingo;
           default:
             return "";
         }

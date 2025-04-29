@@ -5,6 +5,7 @@ import 'package:wheathertest/components/text/text-temperature.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import '../domain/current.dart';
+import '../generated/l10n.dart';
 
 class NowForecast extends StatelessWidget {
   String city;
@@ -13,12 +14,13 @@ class NowForecast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Column(
       children: [
           current.isDay == 1 ?  current.cloudCover > 2 ? Icon(FontAwesome5Solid.cloud, color: Colors.white38) : Icon(FontAwesome5Solid.sun, color: Colors.yellow,) : Icon(FontAwesome5Solid.moon, color: Colors.white38,),
           Textcity(city),
           TextTemperature('${current.temperature2M.toString()}º'),
-          TextStandard('Sensación térmica: ${current.apparentTemperature}', Colors.cyan),
+          TextStandard('${s.sensacion_termina}: ${current.apparentTemperature}', Colors.cyan),
           // CustomScrollView(
           //   slivers: [
           //     WeatherSliverAppBar(

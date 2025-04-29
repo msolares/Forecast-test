@@ -10,6 +10,7 @@ import 'package:wheathertest/extension-functions/hour-format.dart';
 import '../../bloc/forecast_bloc.dart';
 import '../../bloc/forecast_state.dart';
 import '../../domain/hourly.dart';
+import '../../generated/l10n.dart';
 import 'item-forecast-hour.dart';
 
 class CardForecastHour extends StatefulWidget {
@@ -31,6 +32,7 @@ class _CardForecastHourState extends State<CardForecastHour> {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return BlocProvider(
       create: (context) => _forecastBloc,
       child: BlocListener<ForecastBloc, ForecastState>(
@@ -62,7 +64,7 @@ class _CardForecastHourState extends State<CardForecastHour> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextStandard('Previsión por horas', Colors.white38),
+                TextStandard(s.prevision_horas, Colors.white38),
                 const SizedBox(height: 16),
                 // ListView horizontal
                 SizedBox(
