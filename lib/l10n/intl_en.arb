@@ -38,6 +38,8 @@
   "aunnotienescuenta" : "¿Aun no tienes cuenta? Regístrate",
   "registro" : "Registro",
   "registrate" : "Regístrate",
-  "yatinescuenta" : "¿Ya tienes cuenta?, inicia sesión"
+  "yatinescuenta" : "¿Ya tienes cuenta?, inicia sesión",
+  "usuariorequerido" : "El usuario es requerido",
+  "contrasenarequerida" : "La contraseña es requerida"
 
 }

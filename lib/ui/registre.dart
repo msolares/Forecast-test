@@ -81,12 +81,12 @@ class _RegistrePageState extends State<RegistrePage> {
                 ),
                 const SizedBox(height: 40),
                 BuildTextField(
-                    controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) => value == null || value.isEmpty ? "El usuario es requerido" : null,),
+                    controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) => value == null || value.isEmpty ? s.usuariorequerido : null,),
                 const SizedBox(height: 20),
                 BuildTextField(
-                    controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? "la contraseña es requerida" : null,),
+                    controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? s.contrasenarequerida : null, obscureText: true,),
                 const SizedBox(height: 30),
-                ElevatedButtonWidget(s.button, _reg),
+                ElevatedButtonWidget(s.registrate, _reg),
                 const SizedBox(height: 30,),
                 InkWell(
                   onTap: () => Navegacion().Back(context),

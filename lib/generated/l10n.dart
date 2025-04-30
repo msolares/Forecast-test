@@ -329,6 +329,26 @@ class S {
       args: [],
     );
   }
+
+  /// `El usuario es requerido`
+  String get usuariorequerido {
+    return Intl.message(
+      'El usuario es requerido',
+      name: 'usuariorequerido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `La contraseña es requerida`
+  String get contrasenarequerida {
+    return Intl.message(
+      'La contraseña es requerida',
+      name: 'contrasenarequerida',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

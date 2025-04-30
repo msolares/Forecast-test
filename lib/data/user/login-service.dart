@@ -8,12 +8,12 @@ class LoginService {
 
   LoginService(this.apiClient);
 
-  Future<LoginResponse> marclogin(Login login) async {
+  Future<LoginResponse> login(Login login) async {
     var headers = {
       'Content-Type': 'application/json',
     };
 
-    /*Todo, habria que llamar al post de login para obtener respuesta de un servidor pero como no tengo un WS con login lo bamos a hacer con base de datos interna*/
+    /*Todo, habria que llamar al post de login para obtener respuesta de un servidor pero como no tengo un WS con login lo vamos a hacer con base de datos interna*/
 
     try {
       final user = await Database.database.loginDao.getUserByUserAndPass(

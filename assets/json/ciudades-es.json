@@ -1,0 +1,27 @@
+[
+  {
+    "ciudad": "Londres",
+    "latitud": 51.5074,
+    "longitud": -0.1278
+  },
+  {
+    "ciudad": "Nueva York",
+    "latitud": 40.7128,
+    "longitud": -74.0060
+  },
+  {
+    "ciudad": "Tokio",
+    "latitud": 35.6895,
+    "longitud": 139.6917
+  },
+  {
+    "ciudad": "París",
+    "latitud": 48.8566,
+    "longitud": 2.3522
+  },
+  {
+    "ciudad": "Sídney",
+    "latitud": -33.8688,
+    "longitud": 151.2093
+  }
+]

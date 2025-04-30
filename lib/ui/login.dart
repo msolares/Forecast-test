@@ -34,8 +34,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    return BlocProvider(
-      create: (context) => _userBloc,
+    return BlocProvider.value(
+      value: _userBloc,
       child: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
           state.when(
@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 BuildFlagSeletor(),
-                const SizedBox(height: 100),
+                const SizedBox(height: 20),
                 Text(
                   s.login,
                   style: const TextStyle(
@@ -78,12 +78,12 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
                 BuildTextField(
-                    controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) => value == null || value.isEmpty ? "El usuario es requerido" : null,),
+                    controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) => value == null || value.isEmpty ? s.usuariorequerido : null,),
                 const SizedBox(height: 20),
                 BuildTextField(
-                    controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? "la contraseña es requerida" : null,),
+                    controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? s.contrasenarequerida : null, obscureText: true,),
                 const SizedBox(height: 30),
                 ElevatedButtonWidget(s.button, _login),
                 const SizedBox(height: 30,),

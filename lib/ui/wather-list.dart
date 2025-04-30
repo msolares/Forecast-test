@@ -30,6 +30,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
   late TabController _tabController;
   bool _loading = false;
   Forecast? _forecast;
+  int _previousIndex = 0;
 
   @override
   void initState() {
@@ -81,85 +82,81 @@ class _WeatherTabViewState extends State<WeatherTabView>
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    return DefaultTabController(
-      length: cities.length,
-      child: BlocProvider(
-  create: (context) => _forecastBloc,
-  child: BlocListener<ForecastBloc, ForecastState>(
-  listener: (context, state) {
-    state.when(
-        initialState: (){},
-        loadingState: (){
-          setState(() {
-            _loading = true;
-          });
+    return BlocProvider(
+      create: (context) => _forecastBloc,
+      child: BlocListener<ForecastBloc, ForecastState>(
+        listener: (context, state) {
+          state.when(
+            initialState: () {},
+            loadingState: () {
+              setState(() {
+                _loading = true;
+              });
+            },
+            getForecastState: (forecast) {
+              setState(() {
+                _loading = false;
+                _forecast = forecast;
+              });
+            },
+            errorState: (error) {},
+            whatTimeIdNowState: (String hour) {},
+          );
         },
-        getForecastState: (forecast){
-          setState(() {
-            _loading = false;
-            _forecast = forecast;
-            setState(() {
-
-            });
-          });
-        },
-        errorState: (error){},
-        whatTimeIdNowState: (String hour) {}
-    );
-  },
-  child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Row(
-            children: [
-              BuildFlagSeletor(),
-              Spacer(),
-              IconButton(
-                icon: Icon(Icons.logout, color: Colors.white),
-                onPressed: () {
-                  // Aquí va tu lógica de logout
-                },
-              ),
-            ],
-          ),
-          bottom: TabBar(
-            tabs: List.generate(
-              cities.length,
-                  (index) {
-
-                    return GestureDetector(
-                // onLongPress: () => _changeCity(index),
-                child: Tab(text: cities[index].name),
-              );
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: Row(
+              children: [
+                BuildFlagSeletor(),
+                Spacer(),
+                IconButton(
+                  icon: Icon(Icons.email, color: Colors.white),
+                  onPressed: () {
+                    // Aquí va tu lógica de logout
                   },
+                ),
+                IconButton(
+                  icon: Icon(Icons.logout, color: Colors.white),
+                  onPressed: () {
+                    // Aquí va tu lógica de logout
+                  },
+                ),
+
+              ],
+            ),
+            bottom: TabBar(
+              controller: _tabController, // ✅ Ahora usamos nuestro controller
+              tabs: List.generate(
+                cities.length,
+                    (index) => Tab(text: cities[index].name),
+              ),
             ),
           ),
+          body: TabBarView(
+            controller: _tabController, // ✅ Igualmente aquí
+            children: cities.map(
+                  (city) {
+                return _forecast == null
+                    ? Center(child: WhileWait())
+                    : SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 16),
+                      NowForecast(city.name, _forecast!.current),
+                      CardForecastHour(_forecast!.hourly),
+                      CardNextDays(_forecast!.daily),
+                    ],
+                  ),
+                );
+              },
+            ).toList(),
+          ),
+          backgroundColor: Colors.blueGrey.shade900,
         ),
-        body: TabBarView(
-          controller: _tabController,
-          children: cities.map(
-                (city) {
-                  return _forecast == null ?
-                  Center(child: WhileWait())
-                      :
-                  SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 16,),
-                        NowForecast(city.name, _forecast!.current),
-                        CardForecastHour(_forecast!.hourly),
-                        CardNextDays(_forecast!.daily)
-                      ],
-                    ),
-                  );
-                },
-          ).toList(),),
-        backgroundColor: Colors.blueGrey.shade900,
       ),
-),
-),
     );
   }
 }

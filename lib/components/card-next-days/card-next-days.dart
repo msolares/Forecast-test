@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../../domain/daily.dart';
+import '../../generated/l10n.dart';
 import '../text/text-standard.dart';
 import 'item-next-day.dart';
 
@@ -13,6 +14,7 @@ class CardNextDays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Card(
       color: Colors.grey,
       shape: RoundedRectangleBorder(
@@ -25,7 +27,7 @@ class CardNextDays extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextStandard('Previsión próximos días', Colors.white38),
+            TextStandard(s.prevision_proximos_dias, Colors.white38),
             const SizedBox(height: 16),
             // ListView horizontal
             SizedBox(

@@ -31,6 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "ciudadRequerida": MessageLookupByLibrary.simpleMessage(
       "La ciudad es requerida",
     ),
+    "contrasenarequerida": MessageLookupByLibrary.simpleMessage(
+      "La contraseña es requerida",
+    ),
     "domingo": MessageLookupByLibrary.simpleMessage("Domingo"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailInvalido": MessageLookupByLibrary.simpleMessage("Email no válido"),
@@ -87,6 +90,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "tokio": MessageLookupByLibrary.simpleMessage("tokio"),
     "username": MessageLookupByLibrary.simpleMessage("Usuario"),
+    "usuariorequerido": MessageLookupByLibrary.simpleMessage(
+      "El usuario es requerido",
+    ),
     "viernes": MessageLookupByLibrary.simpleMessage("Viernes"),
     "yatinescuenta": MessageLookupByLibrary.simpleMessage(
       "¿Ya tienes cuenta?, inicia sesión",
