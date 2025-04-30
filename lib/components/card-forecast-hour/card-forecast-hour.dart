@@ -39,7 +39,7 @@ class _CardForecastHourState extends State<CardForecastHour> {
         listener: (context, state) {
           state.when(
               initialState: (){},
-              loadingState: (){},
+              loadingState: (load){},
               getForecastState: (forecast){},
               whatTimeIdNowState: (hour){
                 setState(() {
@@ -49,11 +49,12 @@ class _CardForecastHourState extends State<CardForecastHour> {
                   );
                 });
               },
+              uploadedPhrases: (phrases, phrase){},
               errorState: (errorState){},
           );
         },
         child: Card(
-          color: Colors.grey,
+          color: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -63,6 +64,7 @@ class _CardForecastHourState extends State<CardForecastHour> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 TextStandard(s.prevision_horas, Colors.white38),
                 const SizedBox(height: 16),
@@ -79,14 +81,16 @@ class _CardForecastHourState extends State<CardForecastHour> {
                         width: 100,
                         margin: const EdgeInsets.only(right: 12),
                         decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          border: Border.all(color: Colors.blueAccent),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Center(
                           child: ItemForecastHour(
                             '${widget._hourly.time[index].toHour()}h',
                             widget._hourly.temperature2M[index].toTemp(),
-                            widget._hourly.precipitationProbability[index]
+                            widget._hourly.precipitationProbability[index],
+                            widget._hourly.cloudCover[index],
+
                           ),
                         ),
                       );

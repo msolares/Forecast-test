@@ -44,6 +44,8 @@ dependencies:
   json_annotation: ^4.9.0
   equatable: ^2.0.5
   floor: ^1.5.0
+  mocktail: ^1.0.0
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
@@ -64,8 +66,15 @@ dev_dependencies:
   flutter_localizations:
     sdk: flutter
   floor_generator: ^1.5.0
+
 dependency_overrides:
   source_gen: ^2.0.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/ic_launcher.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -83,6 +92,8 @@ flutter:
     - assets/img/Roao.gif
     - assets/flags/es.png
     - assets/flags/us.png
+    - assets/json/frases-es.json
+    - assets/json/frases-en.json
 
   #   - images/a_dot_ham.jpeg
 

@@ -11,6 +11,8 @@ import 'package:wheathertest/ui/registre.dart';
 import 'package:wheathertest/ui/wather-list.dart';
 import 'package:wheathertest/util/navegacion/Navegacion.dart';
 import '../bloc/user/user_state.dart';
+import '../components/generic/ShowDialog.dart';
+import '../components/generic/while-you-wait.dart';
 import '../generated/l10n.dart';
 
 class LoginPage extends StatefulWidget {
@@ -40,66 +42,86 @@ class _LoginPageState extends State<LoginPage> {
         listener: (context, state) {
           state.when(
               initialState: (){},
-              loadingState: (){
+              loadingState: (load){
                 setState(() {
-                  _loading = true;
+                  _loading = load;
                 });
               },
               loginState: (login){
                 if (login.StatusCode == 200 || login.StatusCode == 201){
-                  Navegacion().goTo(context, WeatherTabView());
+                  Navegacion().goToFull(context, WeatherTabView());
+                }else{
+                  Navigator.of(context).push(
+                    ShowDialog().dialogBuilder(context, s.aviso, s.credencialesincorrectas),
+                  );
                 }
+                setState(() {
+                  _loading = false;
+                });
               },
+              logOutState: (logout){},
               registreState: (registre) {}
-              );
+          );
         },
         child: Scaffold(
           extendBodyBehindAppBar: true,
-          body: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF6DD5FA), Color(0xFF2980B9)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                BuildFlagSeletor(),
-                const SizedBox(height: 20),
-                Text(
-                  s.login,
-                  style: const TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+          body: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF6DD5FA), Color(0xFF2980B9)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
                 ),
-                const SizedBox(height: 30),
-                BuildTextField(
-                    controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) => value == null || value.isEmpty ? s.usuariorequerido : null,),
-                const SizedBox(height: 20),
-                BuildTextField(
-                    controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? s.contrasenarequerida : null, obscureText: true,),
-                const SizedBox(height: 30),
-                ElevatedButtonWidget(s.button, _login),
-                const SizedBox(height: 30,),
-                InkWell(
-                  onTap: () => Navegacion().goTo(context, RegistrePage()),
-                  child: Text(
-                    s.aunnotienescuenta,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BuildFlagSeletor(),
+                    const SizedBox(height: 20),
+                    Text(
+                      s.login,
+                      style: const TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
+                    const SizedBox(height: 30),
+                    BuildTextField(
+                        controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) {
+                      if (value == null || value.isEmpty) return s.emailRequerido;
+                      final emailRegex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+                      return emailRegex.hasMatch(value) ? null : s.emailInvalido;
+                    },),
+                    const SizedBox(height: 20),
+                    BuildTextField(
+                        controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? s.contrasenarequerida : null, obscureText: true,),
+                    const SizedBox(height: 30),
+                    ElevatedButtonWidget(s.button, _login),
+                    const SizedBox(height: 30,),
+                    InkWell(
+                      onTap: () => Navegacion().goTo(context, RegistrePage()),
+                      child: Text(
+                        s.aunnotienescuenta,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              Visibility(
+                visible:_loading ,
+                  child: WhileWait()
+              )
+            ],
           ),
         ),
       ),

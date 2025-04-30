@@ -9,6 +9,7 @@ abstract class HourlyUnits with _$HourlyUnits{
     @JsonKey(name: 'temperature_2m') required String temperature2M,
     @JsonKey(name: 'precipitation_probability') required String precipitationProbability,
     @JsonKey(name: 'apparent_temperature') required String apparentTemperature,
+    @JsonKey(name: 'cloud_cover') required String cloudCover,
   }) = _HourlyUnits;
 
   factory HourlyUnits.fromJson(Map<String, dynamic> json) => _$HourlyUnitsFromJson(json);

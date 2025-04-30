@@ -132,6 +132,26 @@ class _$loginEventCopyWithImpl<$Res> implements $loginEventCopyWith<$Res> {
 
 /// @nodoc
 
+class logOut implements UserEvent {
+  const logOut();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is logOut);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'UserEvent.loginOut()';
+  }
+}
+
+/// @nodoc
+
 class registreEvent implements UserEvent {
   const registreEvent(this.login);
 

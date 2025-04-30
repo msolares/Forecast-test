@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "aunnotienescuenta": MessageLookupByLibrary.simpleMessage(
       "¿Aun no tienes cuenta? Regístrate",
     ),
+    "aviso": MessageLookupByLibrary.simpleMessage("Aviso"),
     "button": MessageLookupByLibrary.simpleMessage("Entrar"),
     "ciudad": MessageLookupByLibrary.simpleMessage("Ciudad"),
     "ciudadRequerida": MessageLookupByLibrary.simpleMessage(
@@ -33,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "contrasenarequerida": MessageLookupByLibrary.simpleMessage(
       "La contraseña es requerida",
+    ),
+    "credencialesincorrectas": MessageLookupByLibrary.simpleMessage(
+      "El usuario o contraseña son incorrectos",
     ),
     "domingo": MessageLookupByLibrary.simpleMessage("Domingo"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -67,6 +71,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nombreRequerido": MessageLookupByLibrary.simpleMessage(
       "El nombre es requerido",
     ),
+    "nosehapodidoregistrar": MessageLookupByLibrary.simpleMessage(
+      "No se ha podido registrar, inténtalo más tarde",
+    ),
     "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
     "prevision_horas": MessageLookupByLibrary.simpleMessage(
       "Previsión por horas",
@@ -77,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registrate": MessageLookupByLibrary.simpleMessage("Regístrate"),
     "registro": MessageLookupByLibrary.simpleMessage("Registro"),
     "sabado": MessageLookupByLibrary.simpleMessage("Sábado"),
+    "sabiasque": MessageLookupByLibrary.simpleMessage("¿Sabías qué?"),
     "sensacion_termina": MessageLookupByLibrary.simpleMessage(
       "Sensación térmica",
     ),
@@ -88,7 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "telefonoRequerido": MessageLookupByLibrary.simpleMessage(
       "El teléfono es requerido",
     ),
-    "tokio": MessageLookupByLibrary.simpleMessage("tokio"),
+    "toronto": MessageLookupByLibrary.simpleMessage("Toronto"),
     "username": MessageLookupByLibrary.simpleMessage("Usuario"),
     "usuariorequerido": MessageLookupByLibrary.simpleMessage(
       "El usuario es requerido",

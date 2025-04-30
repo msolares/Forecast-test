@@ -1,4 +1,3 @@
-import 'package:wheathertest/domain/user/login-response.dart';
 import '../../DataBase.dart';
 import '../../domain/user/login.dart';
 import '../ApiClientInterfaz.dart';
@@ -17,7 +16,7 @@ class RegistreService {
 
     try {
       final insert = await Database.database.loginDao.insertUser(login.convertToLoginEntity());
-      if (insert != null && insert == 1) {
+      if (insert != null && insert > -1) {
         return true;
       } else {
         return false;

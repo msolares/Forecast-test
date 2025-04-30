@@ -18,6 +18,9 @@ _Hourly _$HourlyFromJson(Map<String, dynamic> json) => _Hourly(
       apparentTemperature: (json['apparent_temperature'] as List<dynamic>)
           .map((e) => (e as num).toDouble())
           .toList(),
+      cloudCover: (json['cloud_cover'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
     );
 
 Map<String, dynamic> _$HourlyToJson(_Hourly instance) => <String, dynamic>{
@@ -25,4 +28,5 @@ Map<String, dynamic> _$HourlyToJson(_Hourly instance) => <String, dynamic>{
       'temperature_2m': instance.temperature2M,
       'precipitation_probability': instance.precipitationProbability,
       'apparent_temperature': instance.apparentTemperature,
+      'cloud_cover': instance.cloudCover,
     };

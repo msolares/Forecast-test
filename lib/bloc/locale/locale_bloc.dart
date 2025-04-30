@@ -4,7 +4,7 @@ import 'locale_event.dart';
 import 'locale_state.dart';
 
 class LocaleBloc extends Bloc<LocaleEvent, LocaleState> {
-  LocaleBloc() : super(const LocaleState(locale: Locale('es'))) {
+  LocaleBloc() : super(const LocaleState(locale: Locale('en'))) {
     on<ChangeLocale>((event, emit) {
       emit(LocaleState(locale: event.locale));
     });

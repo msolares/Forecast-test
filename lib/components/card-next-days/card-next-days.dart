@@ -16,9 +16,10 @@ class CardNextDays extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = S.of(context);
     return Card(
-      color: Colors.grey,
+      color: Colors.transparent,
+
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(10),
       ),
       elevation: 4,
       margin: const EdgeInsets.all(16),

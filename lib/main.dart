@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<LocaleBloc, LocaleState>(
       builder: (context, state) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           locale: state.locale,
           supportedLocales: const [
             Locale('en'),

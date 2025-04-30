@@ -24,13 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "aceptar": MessageLookupByLibrary.simpleMessage("OK"),
     "aunnotienescuenta": MessageLookupByLibrary.simpleMessage(
-      "¿Aun no tienes cuenta? Regístrate",
+      "Don\'t have an account yet? Sign up",
     ),
+    "aviso": MessageLookupByLibrary.simpleMessage("Notice"),
     "button": MessageLookupByLibrary.simpleMessage("Sign In"),
     "ciudad": MessageLookupByLibrary.simpleMessage("City"),
     "ciudadRequerida": MessageLookupByLibrary.simpleMessage("City is required"),
     "contrasenarequerida": MessageLookupByLibrary.simpleMessage(
-      "La contraseña es requerida",
+      "Password is required",
+    ),
+    "credencialesincorrectas": MessageLookupByLibrary.simpleMessage(
+      "The username or password is incorrect",
     ),
     "domingo": MessageLookupByLibrary.simpleMessage("Sunday"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -55,14 +59,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "miercoles": MessageLookupByLibrary.simpleMessage("Wednesday"),
     "nombre": MessageLookupByLibrary.simpleMessage("Name"),
     "nombreRequerido": MessageLookupByLibrary.simpleMessage("Name is required"),
+    "nosehapodidoregistrar": MessageLookupByLibrary.simpleMessage(
+      "Could not register, please try again later",
+    ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "prevision_horas": MessageLookupByLibrary.simpleMessage("Hourly forecast"),
     "prevision_proximos_dias": MessageLookupByLibrary.simpleMessage(
       "Forecast for the next days",
     ),
-    "registrate": MessageLookupByLibrary.simpleMessage("Regístrate"),
-    "registro": MessageLookupByLibrary.simpleMessage("Registro"),
+    "registrate": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "registro": MessageLookupByLibrary.simpleMessage("Sign Up"),
     "sabado": MessageLookupByLibrary.simpleMessage("Saturday"),
+    "sabiasque": MessageLookupByLibrary.simpleMessage("Did you know?"),
     "sensacion_termina": MessageLookupByLibrary.simpleMessage("Feels like"),
     "singapur": MessageLookupByLibrary.simpleMessage("Singapore"),
     "telefono": MessageLookupByLibrary.simpleMessage("Phone"),
@@ -72,14 +80,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "telefonoRequerido": MessageLookupByLibrary.simpleMessage(
       "Phone number is required",
     ),
-    "tokio": MessageLookupByLibrary.simpleMessage("Tokyo"),
+    "toronto": MessageLookupByLibrary.simpleMessage("Toronto"),
     "username": MessageLookupByLibrary.simpleMessage("Username"),
     "usuariorequerido": MessageLookupByLibrary.simpleMessage(
-      "El usuario es requerido",
+      "Username is required",
     ),
     "viernes": MessageLookupByLibrary.simpleMessage("Friday"),
     "yatinescuenta": MessageLookupByLibrary.simpleMessage(
-      "¿Ya tienes cuenta?, inicia sesión",
+      "Already have an account? Log in",
     ),
   };
 }

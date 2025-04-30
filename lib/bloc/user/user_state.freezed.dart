@@ -58,20 +58,63 @@ class InitialState extends UserState {
 /// @nodoc
 
 class LoadingState extends UserState {
-  const LoadingState() : super._();
+  const LoadingState(this.load) : super._();
+
+  final bool load;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LoadingStateCopyWith<LoadingState> get copyWith =>
+      _$LoadingStateCopyWithImpl<LoadingState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LoadingState);
+        (other.runtimeType == runtimeType &&
+            other is LoadingState &&
+            (identical(other.load, load) || other.load == load));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, load);
 
   @override
   String toString() {
-    return 'UserState.loadingState()';
+    return 'UserState.loadingState(load: $load)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $LoadingStateCopyWith<$Res>
+    implements $UserStateCopyWith<$Res> {
+  factory $LoadingStateCopyWith(
+          LoadingState value, $Res Function(LoadingState) _then) =
+      _$LoadingStateCopyWithImpl;
+  @useResult
+  $Res call({bool load});
+}
+
+/// @nodoc
+class _$LoadingStateCopyWithImpl<$Res> implements $LoadingStateCopyWith<$Res> {
+  _$LoadingStateCopyWithImpl(this._self, this._then);
+
+  final LoadingState _self;
+  final $Res Function(LoadingState) _then;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? load = null,
+  }) {
+    return _then(LoadingState(
+      null == load
+          ? _self.load
+          : load // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -148,6 +191,69 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
     return $LoginResponseCopyWith<$Res>(_self.loginResponse, (value) {
       return _then(_self.copyWith(loginResponse: value));
     });
+  }
+}
+
+/// @nodoc
+
+class LogOutState extends UserState {
+  const LogOutState(this.logOut) : super._();
+
+  final bool logOut;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LogOutStateCopyWith<LogOutState> get copyWith =>
+      _$LogOutStateCopyWithImpl<LogOutState>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LogOutState &&
+            (identical(other.logOut, logOut) || other.logOut == logOut));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, logOut);
+
+  @override
+  String toString() {
+    return 'UserState.logOutState(logOut: $logOut)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $LogOutStateCopyWith<$Res>
+    implements $UserStateCopyWith<$Res> {
+  factory $LogOutStateCopyWith(
+          LogOutState value, $Res Function(LogOutState) _then) =
+      _$LogOutStateCopyWithImpl;
+  @useResult
+  $Res call({bool logOut});
+}
+
+/// @nodoc
+class _$LogOutStateCopyWithImpl<$Res> implements $LogOutStateCopyWith<$Res> {
+  _$LogOutStateCopyWithImpl(this._self, this._then);
+
+  final LogOutState _self;
+  final $Res Function(LogOutState) _then;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? logOut = null,
+  }) {
+    return _then(LogOutState(
+      null == logOut
+          ? _self.logOut
+          : logOut // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 

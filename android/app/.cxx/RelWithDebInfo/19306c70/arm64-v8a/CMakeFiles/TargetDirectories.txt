@@ -1,0 +1,2 @@
+C:/Marcos/Apps/wheathertest/android/app/.cxx/RelWithDebInfo/19306c70/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Marcos/Apps/wheathertest/android/app/.cxx/RelWithDebInfo/19306c70/arm64-v8a/CMakeFiles/rebuild_cache.dir

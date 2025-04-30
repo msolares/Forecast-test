@@ -22,6 +22,8 @@ mixin _$HourlyUnits {
   String get precipitationProbability;
   @JsonKey(name: 'apparent_temperature')
   String get apparentTemperature;
+  @JsonKey(name: 'cloud_cover')
+  String get cloudCover;
 
   /// Create a copy of HourlyUnits
   /// with the given fields replaced by the non-null parameter values.
@@ -45,17 +47,19 @@ mixin _$HourlyUnits {
                     other.precipitationProbability, precipitationProbability) ||
                 other.precipitationProbability == precipitationProbability) &&
             (identical(other.apparentTemperature, apparentTemperature) ||
-                other.apparentTemperature == apparentTemperature));
+                other.apparentTemperature == apparentTemperature) &&
+            (identical(other.cloudCover, cloudCover) ||
+                other.cloudCover == cloudCover));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, time, temperature2M,
-      precipitationProbability, apparentTemperature);
+      precipitationProbability, apparentTemperature, cloudCover);
 
   @override
   String toString() {
-    return 'HourlyUnits(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature)';
+    return 'HourlyUnits(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature, cloudCover: $cloudCover)';
   }
 }
 
@@ -70,7 +74,8 @@ abstract mixin class $HourlyUnitsCopyWith<$Res> {
       @JsonKey(name: 'temperature_2m') String temperature2M,
       @JsonKey(name: 'precipitation_probability')
       String precipitationProbability,
-      @JsonKey(name: 'apparent_temperature') String apparentTemperature});
+      @JsonKey(name: 'apparent_temperature') String apparentTemperature,
+      @JsonKey(name: 'cloud_cover') String cloudCover});
 }
 
 /// @nodoc
@@ -89,6 +94,7 @@ class _$HourlyUnitsCopyWithImpl<$Res> implements $HourlyUnitsCopyWith<$Res> {
     Object? temperature2M = null,
     Object? precipitationProbability = null,
     Object? apparentTemperature = null,
+    Object? cloudCover = null,
   }) {
     return _then(_self.copyWith(
       time: null == time
@@ -107,6 +113,10 @@ class _$HourlyUnitsCopyWithImpl<$Res> implements $HourlyUnitsCopyWith<$Res> {
           ? _self.apparentTemperature
           : apparentTemperature // ignore: cast_nullable_to_non_nullable
               as String,
+      cloudCover: null == cloudCover
+          ? _self.cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -119,8 +129,8 @@ class _HourlyUnits implements HourlyUnits {
       @JsonKey(name: 'temperature_2m') required this.temperature2M,
       @JsonKey(name: 'precipitation_probability')
       required this.precipitationProbability,
-      @JsonKey(name: 'apparent_temperature')
-      required this.apparentTemperature});
+      @JsonKey(name: 'apparent_temperature') required this.apparentTemperature,
+      @JsonKey(name: 'cloud_cover') required this.cloudCover});
   factory _HourlyUnits.fromJson(Map<String, dynamic> json) =>
       _$HourlyUnitsFromJson(json);
 
@@ -135,6 +145,9 @@ class _HourlyUnits implements HourlyUnits {
   @override
   @JsonKey(name: 'apparent_temperature')
   final String apparentTemperature;
+  @override
+  @JsonKey(name: 'cloud_cover')
+  final String cloudCover;
 
   /// Create a copy of HourlyUnits
   /// with the given fields replaced by the non-null parameter values.
@@ -163,17 +176,19 @@ class _HourlyUnits implements HourlyUnits {
                     other.precipitationProbability, precipitationProbability) ||
                 other.precipitationProbability == precipitationProbability) &&
             (identical(other.apparentTemperature, apparentTemperature) ||
-                other.apparentTemperature == apparentTemperature));
+                other.apparentTemperature == apparentTemperature) &&
+            (identical(other.cloudCover, cloudCover) ||
+                other.cloudCover == cloudCover));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, time, temperature2M,
-      precipitationProbability, apparentTemperature);
+      precipitationProbability, apparentTemperature, cloudCover);
 
   @override
   String toString() {
-    return 'HourlyUnits(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature)';
+    return 'HourlyUnits(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature, cloudCover: $cloudCover)';
   }
 }
 
@@ -190,7 +205,8 @@ abstract mixin class _$HourlyUnitsCopyWith<$Res>
       @JsonKey(name: 'temperature_2m') String temperature2M,
       @JsonKey(name: 'precipitation_probability')
       String precipitationProbability,
-      @JsonKey(name: 'apparent_temperature') String apparentTemperature});
+      @JsonKey(name: 'apparent_temperature') String apparentTemperature,
+      @JsonKey(name: 'cloud_cover') String cloudCover});
 }
 
 /// @nodoc
@@ -209,6 +225,7 @@ class __$HourlyUnitsCopyWithImpl<$Res> implements _$HourlyUnitsCopyWith<$Res> {
     Object? temperature2M = null,
     Object? precipitationProbability = null,
     Object? apparentTemperature = null,
+    Object? cloudCover = null,
   }) {
     return _then(_HourlyUnits(
       time: null == time
@@ -226,6 +243,10 @@ class __$HourlyUnitsCopyWithImpl<$Res> implements _$HourlyUnitsCopyWith<$Res> {
       apparentTemperature: null == apparentTemperature
           ? _self.apparentTemperature
           : apparentTemperature // ignore: cast_nullable_to_non_nullable
+              as String,
+      cloudCover: null == cloudCover
+          ? _self.cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }

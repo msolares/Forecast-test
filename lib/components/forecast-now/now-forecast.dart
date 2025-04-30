@@ -4,8 +4,8 @@ import 'package:wheathertest/components/text/text-standard.dart';
 import 'package:wheathertest/components/text/text-temperature.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-import '../domain/current.dart';
-import '../generated/l10n.dart';
+import '../../domain/current.dart';
+import '../../generated/l10n.dart';
 
 class NowForecast extends StatelessWidget {
   String city;
@@ -21,23 +21,6 @@ class NowForecast extends StatelessWidget {
           Textcity(city),
           TextTemperature('${current.temperature2M.toString()}º'),
           TextStandard('${s.sensacion_termina}: ${current.apparentTemperature}', Colors.cyan),
-          // CustomScrollView(
-          //   slivers: [
-          //     WeatherSliverAppBar(
-          //       title: 'Hoy - Barcelona',
-          //       backgroundColor: Colors.blueAccent,
-          //     ),
-          //     SliverList(
-          //       delegate: SliverChildBuilderDelegate(
-          //             (context, index) => ListTile(
-          //           title: Text('Hora ${index + 1}'),
-          //           subtitle: Text('20°C'),
-          //         ),
-          //         childCount: 30,
-          //       ),
-          //     ),
-          //   ],
-          // )
         ],
     );
   }

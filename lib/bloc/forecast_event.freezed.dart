@@ -151,4 +151,88 @@ class whatTimeIsNow implements ForecastEvent {
   }
 }
 
+/// @nodoc
+
+class phraseloading implements ForecastEvent {
+  const phraseloading(this.lg);
+
+  final String lg;
+
+  /// Create a copy of ForecastEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $phraseloadingCopyWith<phraseloading> get copyWith =>
+      _$phraseloadingCopyWithImpl<phraseloading>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is phraseloading &&
+            (identical(other.lg, lg) || other.lg == lg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, lg);
+
+  @override
+  String toString() {
+    return 'ForecastEvent.phraseloading(lg: $lg)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $phraseloadingCopyWith<$Res>
+    implements $ForecastEventCopyWith<$Res> {
+  factory $phraseloadingCopyWith(
+          phraseloading value, $Res Function(phraseloading) _then) =
+      _$phraseloadingCopyWithImpl;
+  @useResult
+  $Res call({String lg});
+}
+
+/// @nodoc
+class _$phraseloadingCopyWithImpl<$Res>
+    implements $phraseloadingCopyWith<$Res> {
+  _$phraseloadingCopyWithImpl(this._self, this._then);
+
+  final phraseloading _self;
+  final $Res Function(phraseloading) _then;
+
+  /// Create a copy of ForecastEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? lg = null,
+  }) {
+    return _then(phraseloading(
+      null == lg
+          ? _self.lg
+          : lg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class updatePhraseRandom implements ForecastEvent {
+  const updatePhraseRandom();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is updatePhraseRandom);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'ForecastEvent.updatePhraseRandom()';
+  }
+}
+
 // dart format on

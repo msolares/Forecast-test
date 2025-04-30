@@ -6,7 +6,8 @@ class ItemForecastHour extends StatelessWidget {
   String hour;
   String temp;
   int rainProbability;
-  ItemForecastHour(this.hour, this.temp, this.rainProbability);
+  int cloudCover;
+  ItemForecastHour(this.hour, this.temp, this.rainProbability, this.cloudCover);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class ItemForecastHour extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TextStandard(hour, Colors.white38),
-        Icon(rainProbability > 10 ? FontAwesome5Solid.cloud_rain : FontAwesome5Solid.sun, color: Colors.white,),
+        Icon(rainProbability > 20 ? FontAwesome5Solid.cloud_rain : cloudCover > 30 ? FontAwesome5Solid.cloud : FontAwesome5Solid.sun, color: Colors.white,),
         TextStandard(temp, Colors.white38),
       ],
     );

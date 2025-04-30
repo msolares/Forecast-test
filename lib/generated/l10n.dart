@@ -80,9 +80,9 @@ class S {
     return Intl.message('London', name: 'londres', desc: '', args: []);
   }
 
-  /// `Tokyo`
-  String get tokio {
-    return Intl.message('Tokyo', name: 'tokio', desc: '', args: []);
+  /// `Toronto`
+  String get toronto {
+    return Intl.message('Toronto', name: 'toronto', desc: '', args: []);
   }
 
   /// `Singapore`
@@ -300,54 +300,84 @@ class S {
     return Intl.message('Submit', name: 'enviar', desc: '', args: []);
   }
 
-  /// `¿Aun no tienes cuenta? Regístrate`
+  /// `Don't have an account yet? Sign up`
   String get aunnotienescuenta {
     return Intl.message(
-      '¿Aun no tienes cuenta? Regístrate',
+      'Don\'t have an account yet? Sign up',
       name: 'aunnotienescuenta',
       desc: '',
       args: [],
     );
   }
 
-  /// `Registro`
+  /// `Sign Up`
   String get registro {
-    return Intl.message('Registro', name: 'registro', desc: '', args: []);
+    return Intl.message('Sign Up', name: 'registro', desc: '', args: []);
   }
 
-  /// `Regístrate`
+  /// `Sign up`
   String get registrate {
-    return Intl.message('Regístrate', name: 'registrate', desc: '', args: []);
+    return Intl.message('Sign up', name: 'registrate', desc: '', args: []);
   }
 
-  /// `¿Ya tienes cuenta?, inicia sesión`
+  /// `Already have an account? Log in`
   String get yatinescuenta {
     return Intl.message(
-      '¿Ya tienes cuenta?, inicia sesión',
+      'Already have an account? Log in',
       name: 'yatinescuenta',
       desc: '',
       args: [],
     );
   }
 
-  /// `El usuario es requerido`
+  /// `Username is required`
   String get usuariorequerido {
     return Intl.message(
-      'El usuario es requerido',
+      'Username is required',
       name: 'usuariorequerido',
       desc: '',
       args: [],
     );
   }
 
-  /// `La contraseña es requerida`
+  /// `Password is required`
   String get contrasenarequerida {
     return Intl.message(
-      'La contraseña es requerida',
+      'Password is required',
       name: 'contrasenarequerida',
       desc: '',
       args: [],
     );
+  }
+
+  /// `Notice`
+  String get aviso {
+    return Intl.message('Notice', name: 'aviso', desc: '', args: []);
+  }
+
+  /// `The username or password is incorrect`
+  String get credencialesincorrectas {
+    return Intl.message(
+      'The username or password is incorrect',
+      name: 'credencialesincorrectas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not register, please try again later`
+  String get nosehapodidoregistrar {
+    return Intl.message(
+      'Could not register, please try again later',
+      name: 'nosehapodidoregistrar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Did you know?`
+  String get sabiasque {
+    return Intl.message('Did you know?', name: 'sabiasque', desc: '', args: []);
   }
 }
 

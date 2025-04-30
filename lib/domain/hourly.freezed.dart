@@ -22,6 +22,8 @@ mixin _$Hourly {
   List<int> get precipitationProbability;
   @JsonKey(name: 'apparent_temperature')
   List<double> get apparentTemperature;
+  @JsonKey(name: 'cloud_cover')
+  List<int> get cloudCover;
 
   /// Create a copy of Hourly
   /// with the given fields replaced by the non-null parameter values.
@@ -44,7 +46,9 @@ mixin _$Hourly {
             const DeepCollectionEquality().equals(
                 other.precipitationProbability, precipitationProbability) &&
             const DeepCollectionEquality()
-                .equals(other.apparentTemperature, apparentTemperature));
+                .equals(other.apparentTemperature, apparentTemperature) &&
+            const DeepCollectionEquality()
+                .equals(other.cloudCover, cloudCover));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -54,11 +58,12 @@ mixin _$Hourly {
       const DeepCollectionEquality().hash(time),
       const DeepCollectionEquality().hash(temperature2M),
       const DeepCollectionEquality().hash(precipitationProbability),
-      const DeepCollectionEquality().hash(apparentTemperature));
+      const DeepCollectionEquality().hash(apparentTemperature),
+      const DeepCollectionEquality().hash(cloudCover));
 
   @override
   String toString() {
-    return 'Hourly(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature)';
+    return 'Hourly(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature, cloudCover: $cloudCover)';
   }
 }
 
@@ -72,7 +77,8 @@ abstract mixin class $HourlyCopyWith<$Res> {
       @JsonKey(name: 'temperature_2m') List<double> temperature2M,
       @JsonKey(name: 'precipitation_probability')
       List<int> precipitationProbability,
-      @JsonKey(name: 'apparent_temperature') List<double> apparentTemperature});
+      @JsonKey(name: 'apparent_temperature') List<double> apparentTemperature,
+      @JsonKey(name: 'cloud_cover') List<int> cloudCover});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class _$HourlyCopyWithImpl<$Res> implements $HourlyCopyWith<$Res> {
     Object? temperature2M = null,
     Object? precipitationProbability = null,
     Object? apparentTemperature = null,
+    Object? cloudCover = null,
   }) {
     return _then(_self.copyWith(
       time: null == time
@@ -109,6 +116,10 @@ class _$HourlyCopyWithImpl<$Res> implements $HourlyCopyWith<$Res> {
           ? _self.apparentTemperature
           : apparentTemperature // ignore: cast_nullable_to_non_nullable
               as List<double>,
+      cloudCover: null == cloudCover
+          ? _self.cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -123,11 +134,13 @@ class _Hourly implements Hourly {
       @JsonKey(name: 'precipitation_probability')
       required final List<int> precipitationProbability,
       @JsonKey(name: 'apparent_temperature')
-      required final List<double> apparentTemperature})
+      required final List<double> apparentTemperature,
+      @JsonKey(name: 'cloud_cover') required final List<int> cloudCover})
       : _time = time,
         _temperature2M = temperature2M,
         _precipitationProbability = precipitationProbability,
-        _apparentTemperature = apparentTemperature;
+        _apparentTemperature = apparentTemperature,
+        _cloudCover = cloudCover;
   factory _Hourly.fromJson(Map<String, dynamic> json) => _$HourlyFromJson(json);
 
   final List<String> _time;
@@ -167,6 +180,15 @@ class _Hourly implements Hourly {
     return EqualUnmodifiableListView(_apparentTemperature);
   }
 
+  final List<int> _cloudCover;
+  @override
+  @JsonKey(name: 'cloud_cover')
+  List<int> get cloudCover {
+    if (_cloudCover is EqualUnmodifiableListView) return _cloudCover;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cloudCover);
+  }
+
   /// Create a copy of Hourly
   /// with the given fields replaced by the non-null parameter values.
   @override
@@ -193,7 +215,9 @@ class _Hourly implements Hourly {
             const DeepCollectionEquality().equals(
                 other._precipitationProbability, _precipitationProbability) &&
             const DeepCollectionEquality()
-                .equals(other._apparentTemperature, _apparentTemperature));
+                .equals(other._apparentTemperature, _apparentTemperature) &&
+            const DeepCollectionEquality()
+                .equals(other._cloudCover, _cloudCover));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -203,11 +227,12 @@ class _Hourly implements Hourly {
       const DeepCollectionEquality().hash(_time),
       const DeepCollectionEquality().hash(_temperature2M),
       const DeepCollectionEquality().hash(_precipitationProbability),
-      const DeepCollectionEquality().hash(_apparentTemperature));
+      const DeepCollectionEquality().hash(_apparentTemperature),
+      const DeepCollectionEquality().hash(_cloudCover));
 
   @override
   String toString() {
-    return 'Hourly(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature)';
+    return 'Hourly(time: $time, temperature2M: $temperature2M, precipitationProbability: $precipitationProbability, apparentTemperature: $apparentTemperature, cloudCover: $cloudCover)';
   }
 }
 
@@ -222,7 +247,8 @@ abstract mixin class _$HourlyCopyWith<$Res> implements $HourlyCopyWith<$Res> {
       @JsonKey(name: 'temperature_2m') List<double> temperature2M,
       @JsonKey(name: 'precipitation_probability')
       List<int> precipitationProbability,
-      @JsonKey(name: 'apparent_temperature') List<double> apparentTemperature});
+      @JsonKey(name: 'apparent_temperature') List<double> apparentTemperature,
+      @JsonKey(name: 'cloud_cover') List<int> cloudCover});
 }
 
 /// @nodoc
@@ -241,6 +267,7 @@ class __$HourlyCopyWithImpl<$Res> implements _$HourlyCopyWith<$Res> {
     Object? temperature2M = null,
     Object? precipitationProbability = null,
     Object? apparentTemperature = null,
+    Object? cloudCover = null,
   }) {
     return _then(_Hourly(
       time: null == time
@@ -259,6 +286,10 @@ class __$HourlyCopyWithImpl<$Res> implements _$HourlyCopyWith<$Res> {
           ? _self._apparentTemperature
           : apparentTemperature // ignore: cast_nullable_to_non_nullable
               as List<double>,
+      cloudCover: null == cloudCover
+          ? _self._cloudCover
+          : cloudCover // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }

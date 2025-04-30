@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
   String _text;
-  VoidCallback _onTap;
+  VoidCallback? _onTap;
   ElevatedButtonWidget(this._text, this._onTap);
 
   @override

@@ -58,20 +58,63 @@ class InitialState extends ForecastState {
 /// @nodoc
 
 class LoadingState extends ForecastState {
-  const LoadingState() : super._();
+  const LoadingState(this.load) : super._();
+
+  final bool load;
+
+  /// Create a copy of ForecastState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LoadingStateCopyWith<LoadingState> get copyWith =>
+      _$LoadingStateCopyWithImpl<LoadingState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LoadingState);
+        (other.runtimeType == runtimeType &&
+            other is LoadingState &&
+            (identical(other.load, load) || other.load == load));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, load);
 
   @override
   String toString() {
-    return 'ForecastState.loadingState()';
+    return 'ForecastState.loadingState(load: $load)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $LoadingStateCopyWith<$Res>
+    implements $ForecastStateCopyWith<$Res> {
+  factory $LoadingStateCopyWith(
+          LoadingState value, $Res Function(LoadingState) _then) =
+      _$LoadingStateCopyWithImpl;
+  @useResult
+  $Res call({bool load});
+}
+
+/// @nodoc
+class _$LoadingStateCopyWithImpl<$Res> implements $LoadingStateCopyWith<$Res> {
+  _$LoadingStateCopyWithImpl(this._self, this._then);
+
+  final LoadingState _self;
+  final $Res Function(LoadingState) _then;
+
+  /// Create a copy of ForecastState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? load = null,
+  }) {
+    return _then(LoadingState(
+      null == load
+          ? _self.load
+          : load // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -276,6 +319,99 @@ class _$WhatTimeIsNowStateCopyWithImpl<$Res>
           : hour // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+}
+
+/// @nodoc
+
+class UploadedPhrases extends ForecastState {
+  const UploadedPhrases(final List<DoYouKnow> phrases, this.phraseNow)
+      : _phrases = phrases,
+        super._();
+
+  final List<DoYouKnow> _phrases;
+  List<DoYouKnow> get phrases {
+    if (_phrases is EqualUnmodifiableListView) return _phrases;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_phrases);
+  }
+
+  final DoYouKnow phraseNow;
+
+  /// Create a copy of ForecastState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $UploadedPhrasesCopyWith<UploadedPhrases> get copyWith =>
+      _$UploadedPhrasesCopyWithImpl<UploadedPhrases>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UploadedPhrases &&
+            const DeepCollectionEquality().equals(other._phrases, _phrases) &&
+            (identical(other.phraseNow, phraseNow) ||
+                other.phraseNow == phraseNow));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_phrases), phraseNow);
+
+  @override
+  String toString() {
+    return 'ForecastState.uploadedPhrases(phrases: $phrases, phraseNow: $phraseNow)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $UploadedPhrasesCopyWith<$Res>
+    implements $ForecastStateCopyWith<$Res> {
+  factory $UploadedPhrasesCopyWith(
+          UploadedPhrases value, $Res Function(UploadedPhrases) _then) =
+      _$UploadedPhrasesCopyWithImpl;
+  @useResult
+  $Res call({List<DoYouKnow> phrases, DoYouKnow phraseNow});
+
+  $DoYouKnowCopyWith<$Res> get phraseNow;
+}
+
+/// @nodoc
+class _$UploadedPhrasesCopyWithImpl<$Res>
+    implements $UploadedPhrasesCopyWith<$Res> {
+  _$UploadedPhrasesCopyWithImpl(this._self, this._then);
+
+  final UploadedPhrases _self;
+  final $Res Function(UploadedPhrases) _then;
+
+  /// Create a copy of ForecastState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? phrases = null,
+    Object? phraseNow = null,
+  }) {
+    return _then(UploadedPhrases(
+      null == phrases
+          ? _self._phrases
+          : phrases // ignore: cast_nullable_to_non_nullable
+              as List<DoYouKnow>,
+      null == phraseNow
+          ? _self.phraseNow
+          : phraseNow // ignore: cast_nullable_to_non_nullable
+              as DoYouKnow,
+    ));
+  }
+
+  /// Create a copy of ForecastState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DoYouKnowCopyWith<$Res> get phraseNow {
+    return $DoYouKnowCopyWith<$Res>(_self.phraseNow, (value) {
+      return _then(_self.copyWith(phraseNow: value));
+    });
   }
 }
 

@@ -5,7 +5,7 @@
   "button": "Sign In",
 
   "londres": "London",
-  "tokio": "Tokyo",
+  "toronto" : "Toronto",
   "singapur": "Singapore",
   "sensacion_termina": "Feels like",
   "prevision_horas": "Hourly forecast",
@@ -35,11 +35,15 @@
   "telefonoRequerido": "Phone number is required",
   "telefonoInvalido": "Invalid phone number",
   "enviar": "Submit",
-  "aunnotienescuenta" : "¿Aun no tienes cuenta? Regístrate",
-  "registro" : "Registro",
-  "registrate" : "Regístrate",
-  "yatinescuenta" : "¿Ya tienes cuenta?, inicia sesión",
-  "usuariorequerido" : "El usuario es requerido",
-  "contrasenarequerida" : "La contraseña es requerida"
+  "aunnotienescuenta": "Don't have an account yet? Sign up",
+  "registro": "Sign Up",
+  "registrate": "Sign up",
+  "yatinescuenta": "Already have an account? Log in",
+  "usuariorequerido": "Username is required",
+  "contrasenarequerida": "Password is required",
+  "aviso": "Notice",
+  "credencialesincorrectas": "The username or password is incorrect",
+  "nosehapodidoregistrar": "Could not register, please try again later",
+  "sabiasque" : "Did you know?"
 
 }

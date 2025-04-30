@@ -9,6 +9,7 @@ abstract class Hourly with _$Hourly{
     @JsonKey(name: 'temperature_2m') required List<double> temperature2M,
     @JsonKey(name: 'precipitation_probability') required List<int> precipitationProbability,
     @JsonKey(name: 'apparent_temperature') required List<double> apparentTemperature,
+    @JsonKey(name: 'cloud_cover') required List<int> cloudCover,
   }) = _Hourly;
 
   factory Hourly.fromJson(Map<String, dynamic> json) => _$HourlyFromJson(json);

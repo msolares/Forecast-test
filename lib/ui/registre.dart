@@ -10,6 +10,7 @@ import 'package:wheathertest/domain/user/login.dart';
 import 'package:wheathertest/ui/wather-list.dart';
 import 'package:wheathertest/util/navegacion/Navegacion.dart';
 import '../bloc/user/user_state.dart';
+import '../components/generic/ShowDialog.dart';
 import '../generated/l10n.dart';
 
 class RegistrePage extends StatefulWidget {
@@ -33,26 +34,29 @@ class _RegistrePageState extends State<RegistrePage> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    return BlocProvider(
-      create: (context) => _userBloc,
+    return BlocProvider.value(
+      value: _userBloc,
       child: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
           state.when(
-              initialState: (){},
-              loadingState: (){
-                setState(() {
-                  _loading = true;
-                });
-              },
-              loginState: (login){},
-              registreState: (registre) {
-                if(registre){
-                  Navegacion().Back(context);
-                }else{
-                  //todo pop up para aviso. o caso de uso en caso de que falle el registro que toque.
-                }
+            initialState: (){},
+            loadingState: (load){
+              setState(() {
+                _loading = load;
+              });
+            },
+            loginState: (login){},
+            logOutState: (logout){},
+            registreState: (registre) {
+              if(registre){
+                Navegacion().Back(context);
+              }else{
+                Navigator.of(context).push(
+                    ShowDialog().dialogBuilder(context, s.aviso, s.nosehapodidoregistrar)
+                );
               }
-              );
+            }
+          );
         },
         child: Scaffold(
           extendBodyBehindAppBar: true,
@@ -70,7 +74,7 @@ class _RegistrePageState extends State<RegistrePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 BuildFlagSeletor(),
-                const SizedBox(height: 100),
+                const SizedBox(height: 20),
                 Text(
                   s.registro,
                   style: const TextStyle(
@@ -81,7 +85,11 @@ class _RegistrePageState extends State<RegistrePage> {
                 ),
                 const SizedBox(height: 40),
                 BuildTextField(
-                    controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) => value == null || value.isEmpty ? s.usuariorequerido : null,),
+                    controller: _usernameController, label: s.username, icon: Icons.person, validator: (value) {
+                  if (value == null || value.isEmpty) return s.emailRequerido;
+                  final emailRegex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+                  return emailRegex.hasMatch(value) ? null : s.emailInvalido;
+                },),
                 const SizedBox(height: 20),
                 BuildTextField(
                     controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? s.contrasenarequerida : null, obscureText: true,),

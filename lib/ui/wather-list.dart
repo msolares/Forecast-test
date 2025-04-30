@@ -3,10 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injector/injector.dart';
 import 'package:wheathertest/bloc/forecast_event.dart';
 import 'package:wheathertest/bloc/forecast_state.dart';
-import 'package:wheathertest/components/now-forecast.dart';
+import 'package:wheathertest/bloc/user/user_bloc.dart';
+import 'package:wheathertest/bloc/user/user_event.dart';
+import 'package:wheathertest/bloc/user/user_state.dart';
+import 'package:wheathertest/components/forecast-now/now-forecast.dart';
+import 'package:wheathertest/components/phrases/card-phrases.dart';
 import 'package:wheathertest/domain/forecast.dart';
+import 'package:wheathertest/ui/contact.dart';
+import 'package:wheathertest/ui/login.dart';
+import 'package:wheathertest/util/navegacion/Navegacion.dart';
 
 import '../bloc/forecast_bloc.dart';
+import '../bloc/locale/locale_bloc.dart';
+import '../bloc/locale/locale_state.dart';
 import '../components/card-forecast-hour/card-forecast-hour.dart';
 import '../components/card-next-days/card-next-days.dart';
 import '../components/flag-selector/BuildFlagSelector.dart';
@@ -24,13 +33,15 @@ class _WeatherTabViewState extends State<WeatherTabView>
     with TickerProviderStateMixin {
 
   ForecastBloc _forecastBloc = Injector.appInstance.get<ForecastBloc>();
+  UserBloc _userBloc = Injector.appInstance.get<UserBloc>();
   
-  List<City> cities = [City(S.current.londres, 51.507222222222, -0.1275), City(S.current.tokio, 43.670277777778, -79.386666666667), City(S.current.singapur, 1.352083, -103.819836)];
+  List<City> cities = [City(S.current.londres, 51.507222222222, -0.1275), City(S.current.toronto, 43.670277777778, -79.386666666667), City(S.current.singapur, 1.352083, -103.819836)];
   late City selectCity;
   late TabController _tabController;
   bool _loading = false;
   Forecast? _forecast;
-  int _previousIndex = 0;
+  String _phrase = "";
+
 
   @override
   void initState() {
@@ -82,27 +93,64 @@ class _WeatherTabViewState extends State<WeatherTabView>
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    return BlocProvider(
-      create: (context) => _forecastBloc,
-      child: BlocListener<ForecastBloc, ForecastState>(
-        listener: (context, state) {
-          state.when(
-            initialState: () {},
-            loadingState: () {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => _userBloc),
+        BlocProvider(create: (_) => _forecastBloc),
+      ],
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<ForecastBloc, ForecastState>(
+            listener: (context, state) {
+              state.when(
+                initialState: () {},
+                loadingState: (load) {
+                  setState(() {
+                    _loading = load;
+                  });
+                },
+                getForecastState: (forecast) {
+                  setState(() {
+                    _loading = false;
+                    _forecast = forecast;
+                  });
+                  _forecastBloc.add(ForecastEvent.phraseloading("es"));
+                },
+                uploadedPhrases: (phrases, phrase){
+                  setState(() {
+                    _phrase = phrase.texto;
+                  });
+                },
+                errorState: (error) {},
+                whatTimeIdNowState: (String hour) {},
+              );
+            },
+          ),
+          BlocListener<LocaleBloc, LocaleState>(
+            listener: (context, state) {
+              print('LocaleBloc emitió nuevo locale: ${state.locale}');
+              _forecastBloc.add(ForecastEvent.phraseloading(state.locale.languageCode));
               setState(() {
-                _loading = true;
+                cities = [City(s.londres, 51.507222222222, -0.1275), City(s.toronto, 43.670277777778, -79.386666666667), City(s.singapur, 1.352083, -103.819836)];
               });
             },
-            getForecastState: (forecast) {
-              setState(() {
-                _loading = false;
-                _forecast = forecast;
-              });
+          ),
+          BlocListener<UserBloc, UserState>(
+            listener: (context, state) {
+              state.when(
+                  initialState: (){},
+                  loadingState: (load){},
+                  loginState: (login){},
+                  logOutState: (logout){
+                    if (logout) Navegacion().goToFull(context, LoginPage());
+                  },
+                  registreState: (registre) {}
+              );
             },
-            errorState: (error) {},
-            whatTimeIdNowState: (String hour) {},
-          );
-        },
+          ),
+
+        ],
+
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.transparent,
@@ -114,13 +162,13 @@ class _WeatherTabViewState extends State<WeatherTabView>
                 IconButton(
                   icon: Icon(Icons.email, color: Colors.white),
                   onPressed: () {
-                    // Aquí va tu lógica de logout
+                    Navegacion().goTo(context, ContactFormPage());
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.logout, color: Colors.white),
                   onPressed: () {
-                    // Aquí va tu lógica de logout
+                    _userBloc.add(UserEvent.loginOut());
                   },
                 ),
 
@@ -148,6 +196,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
                       NowForecast(city.name, _forecast!.current),
                       CardForecastHour(_forecast!.hourly),
                       CardNextDays(_forecast!.daily),
+                      CardPhrases(_phrase)
                     ],
                   ),
                 );

@@ -5,7 +5,7 @@
   "button": "Entrar",
 
   "londres" : "Londres",
-  "tokio" : "tokio",
+  "toronto" : "Toronto",
   "singapur" : "Singapur",
   "sensacion_termina" : "Sensación térmica",
   "prevision_horas" : "Previsión por horas",
@@ -40,6 +40,10 @@
   "registrate" : "Regístrate",
   "yatinescuenta" : "¿Ya tienes cuenta?, inicia sesión",
   "usuariorequerido" : "El usuario es requerido",
-  "contrasenarequerida" : "La contraseña es requerida"
+  "contrasenarequerida" : "La contraseña es requerida",
+  "aviso" : "Aviso",
+  "credencialesincorrectas" : "El usuario o contraseña son incorrectos",
+  "nosehapodidoregistrar" : "No se ha podido registrar, inténtalo más tarde",
+  "sabiasque" : "¿Sabías qué?"
 
 }

@@ -20,7 +20,7 @@ class ItemNextDays extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(width: size.width/3.4, child: TextStandard(time.toDays(), Colors.white38)),
+        SizedBox(width: size.width/3.4, child: TextStandard(time.toDays(), Colors.white38, ), ),
         SizedBox(width: size.width/6, child: TextStandard(min.toTemp(), Colors.white38)),
         SizedBox(
           width: size.width/6,
@@ -31,7 +31,7 @@ class ItemNextDays extends StatelessWidget {
               Icon(rainProbability > 20 ? FontAwesome5Solid.cloud_rain : cloudCoverMean > 30 ? FontAwesome5Solid.cloud : FontAwesome5Solid.sun, color: Colors.white,),
               Visibility(
                   visible: rainProbability > 20,
-                  child: Text('$rainProbability %', style: TextStyle(color: Colors.white),)
+                  child: Text('$rainProbability %', style: TextStyle(color: Colors.white), overflow: TextOverflow.ellipsis,)
               )
             ],
           ),

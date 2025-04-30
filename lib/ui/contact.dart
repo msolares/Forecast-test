@@ -15,12 +15,25 @@ class ContactFormPage extends StatefulWidget {
 
 class _ContactFormPageState extends State<ContactFormPage> {
   final _formKey = GlobalKey<FormState>();
+  bool _isButtonEnabled = false;
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+
+  void _checkIfAllFieldsFilled() {
+    setState(() {
+      _isButtonEnabled =
+          _nameController.text.isNotEmpty &&
+              _dobController.text.isNotEmpty &&
+              _cityController.text.isNotEmpty &&
+              _emailController.text.isNotEmpty &&
+              _phoneController.text.isNotEmpty;
+    });
+  }
+
 
   Future<void> _selectDate() async {
     final DateTime? picked = await showDatePicker(
@@ -52,6 +65,32 @@ class _ContactFormPageState extends State<ContactFormPage> {
         ),
       );
     }
+  }
+
+  @override
+  void initState() {
+    _nameController.addListener(_checkIfAllFieldsFilled);
+    _dobController.addListener(_checkIfAllFieldsFilled);
+    _cityController.addListener(_checkIfAllFieldsFilled);
+    _emailController.addListener(_checkIfAllFieldsFilled);
+    _phoneController.addListener(_checkIfAllFieldsFilled);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _nameController.removeListener(_checkIfAllFieldsFilled);
+    _dobController.removeListener(_checkIfAllFieldsFilled);
+    _cityController.removeListener(_checkIfAllFieldsFilled);
+    _emailController.removeListener(_checkIfAllFieldsFilled);
+    _phoneController.removeListener(_checkIfAllFieldsFilled);
+
+    _nameController.dispose();
+    _dobController.dispose();
+    _cityController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    super.dispose();
   }
 
   @override
@@ -130,7 +169,10 @@ class _ContactFormPageState extends State<ContactFormPage> {
                     },
                   ),
                   const SizedBox(height: 30),
-                  ElevatedButtonWidget(s.enviar, _submitForm),
+                  ElevatedButtonWidget(
+                    s.enviar,
+                    _isButtonEnabled ? _submitForm : null,
+                  ),
                 ],
               ),
             ),
