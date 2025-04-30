@@ -45,9 +45,24 @@ class _WeatherTabViewState extends State<WeatherTabView>
 
   @override
   void initState() {
+    // _tabController = TabController(length: cities.length, vsync: this);
+    // selectCity = cities.first;
+    crearTab();
+    _forecastBloc.add(getForecastEvent(Params(lat: selectCity.lat, long: selectCity.long)));
+    // _tabController.addListener(() {
+    //   if (_tabController.indexIsChanging) return;
+    //   final selected = cities[_tabController.index];
+    //   setState(() {
+    //     selectCity = selected;
+    //   });
+    //   _forecastBloc.add(getForecastEvent(Params(lat: selected.lat, long: selected.long)));
+    // });
+    super.initState();
+  }
+
+  crearTab(){
     _tabController = TabController(length: cities.length, vsync: this);
     selectCity = cities.first;
-    _forecastBloc.add(getForecastEvent(Params(lat: selectCity.lat, long: selectCity.long)));
     _tabController.addListener(() {
       if (_tabController.indexIsChanging) return;
       final selected = cities[_tabController.index];
@@ -56,39 +71,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
       });
       _forecastBloc.add(getForecastEvent(Params(lat: selected.lat, long: selected.long)));
     });
-    super.initState();
   }
-
-  // void _changeCity(int index) async {
-  //   final newCity = await showDialog<String>(
-  //     context: context,
-  //     builder: (context) {
-  //       final availableCities = ['Madrid', 'Barcelona', 'Toronto', 'Londres', 'Singapur'];
-  //       return AlertDialog(
-  //         title: Text('Selecciona una ciudad'),
-  //         content: SizedBox(
-  //           width: double.maxFinite,
-  //           child: ListView.builder(
-  //             shrinkWrap: true,
-  //             itemCount: availableCities.length,
-  //             itemBuilder: (_, i) {
-  //               return ListTile(
-  //                 title: Text(availableCities[i]),
-  //                 onTap: () => Navigator.pop(context, availableCities[i]),
-  //               );
-  //             },
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  //
-  //   if (newCity != null) {
-  //     setState(() {
-  //       cities[index] = newCity;
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +97,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
                     _loading = false;
                     _forecast = forecast;
                   });
-                  _forecastBloc.add(ForecastEvent.phraseloading("es"));
+                  _forecastBloc.add(ForecastEvent.phraseloading("en"));
                 },
                 uploadedPhrases: (phrases, phrase){
                   setState(() {
@@ -127,11 +110,14 @@ class _WeatherTabViewState extends State<WeatherTabView>
             },
           ),
           BlocListener<LocaleBloc, LocaleState>(
-            listener: (context, state) {
+            listener: (context, state) async{
               print('LocaleBloc emitió nuevo locale: ${state.locale}');
               _forecastBloc.add(ForecastEvent.phraseloading(state.locale.languageCode));
+              cities.clear();
+              cities = [City(s.londres, 51.507222222222, -0.1275), City(s.toronto, 43.670277777778, -79.386666666667), City(s.singapur, 1.352083, -103.819836)];
+              crearTab();
               setState(() {
-                cities = [City(s.londres, 51.507222222222, -0.1275), City(s.toronto, 43.670277777778, -79.386666666667), City(s.singapur, 1.352083, -103.819836)];
+
               });
             },
           ),
