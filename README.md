@@ -4,7 +4,7 @@ App de pronostico de tiempo para prueba
 
 ## Getting Started
 
--Registro y login con base de datos local con FLOOR. Se puede cambiar el idioma de la app desde cualquiera de estas pantallas. 
+-Registro y login con base de datos local con FLOOR. Se puede cambiar el idioma de la app desde cualquiera de estas pantallas.\n 
 -Prevision de tiempo con API open-meteo.com
     En la viste de previsión: 
     -Seleccion de idioma entre inglés y españos controlado por intl y para "¿Sabía qué?" con json en diferente idioma
