@@ -11,6 +11,7 @@ import 'package:wheathertest/components/phrases/card-phrases.dart';
 import 'package:wheathertest/domain/forecast.dart';
 import 'package:wheathertest/ui/contact.dart';
 import 'package:wheathertest/ui/login.dart';
+import 'package:wheathertest/util/cities/load-cities.dart';
 import 'package:wheathertest/util/navegacion/Navegacion.dart';
 
 import '../bloc/forecast_bloc.dart';
@@ -45,18 +46,8 @@ class _WeatherTabViewState extends State<WeatherTabView>
 
   @override
   void initState() {
-    // _tabController = TabController(length: cities.length, vsync: this);
-    // selectCity = cities.first;
     crearTab();
     _forecastBloc.add(getForecastEvent(Params(lat: selectCity.lat, long: selectCity.long)));
-    // _tabController.addListener(() {
-    //   if (_tabController.indexIsChanging) return;
-    //   final selected = cities[_tabController.index];
-    //   setState(() {
-    //     selectCity = selected;
-    //   });
-    //   _forecastBloc.add(getForecastEvent(Params(lat: selected.lat, long: selected.long)));
-    // });
     super.initState();
   }
 
@@ -76,9 +67,10 @@ class _WeatherTabViewState extends State<WeatherTabView>
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    cities = LoadCities().getCities(context);
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => _userBloc),
+        BlocProvider.value(value:  _userBloc),
         BlocProvider(create: (_) => _forecastBloc),
       ],
       child: MultiBlocListener(
@@ -110,15 +102,11 @@ class _WeatherTabViewState extends State<WeatherTabView>
             },
           ),
           BlocListener<LocaleBloc, LocaleState>(
-            listener: (context, state) async{
+            listener: (context, state) {
               print('LocaleBloc emitió nuevo locale: ${state.locale}');
               _forecastBloc.add(ForecastEvent.phraseloading(state.locale.languageCode));
-              cities.clear();
-              cities = [City(s.londres, 51.507222222222, -0.1275), City(s.toronto, 43.670277777778, -79.386666666667), City(s.singapur, 1.352083, -103.819836)];
               crearTab();
-              setState(() {
-
-              });
+              setState(() {});
             },
           ),
           BlocListener<UserBloc, UserState>(
@@ -161,7 +149,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
               ],
             ),
             bottom: TabBar(
-              controller: _tabController, // ✅ Ahora usamos nuestro controller
+              controller: _tabController,
               tabs: List.generate(
                 cities.length,
                     (index) => Tab(text: cities[index].name),
@@ -169,7 +157,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
             ),
           ),
           body: TabBarView(
-            controller: _tabController, // ✅ Igualmente aquí
+            controller: _tabController,
             children: cities.map(
                   (city) {
                 return _forecast == null

@@ -4,13 +4,15 @@ App de pronostico de tiempo para prueba
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-Registro y login con base de datos local con FLOOR. Se puede cambiar el idioma de la app desde cualquiera de estas pantallas. 
+-Prevision de tiempo con API open-meteo.com
+    En la viste de previsión: 
+    -Seleccion de idioma entre inglés y españos controlado por intl y para "¿Sabía qué?" con json en diferente idioma
+    -Acceso a formulario de contactoo
+    -logOut
+    -Información de la actualidad Dia o noche, en caso de día si es soleado, nublado o lluvia, temperatura actual y sencación térmica
+    -previsión por horas yendo a la hora actual del día actual, en la que aparece hora, icono de soleado, nublado o lluvia.
+    -previsión de los proxímos 7 días contando hoy. en el que aparce, el día, temp mínima, icono de soleado, nublado o lluvía con porcentaje de probabilidad.
+    -sabías qué, que es un apartado extra en el que se muestran curisidades sobre metereología, en el idioma seleccionado.
+-Contacto
+    -Formalario de contacto, con cambio de idioma, y comprobaciones en los value de los campos.
