@@ -4,15 +4,31 @@ App de pronostico de tiempo para prueba
 
 ## Getting Started
 
--Registro y login con base de datos local con FLOOR. Se puede cambiar el idioma de la app desde cualquiera de estas pantallas.\n 
--Prevision de tiempo con API open-meteo.com
-    En la viste de previsión: 
-    -Seleccion de idioma entre inglés y españos controlado por intl y para "¿Sabía qué?" con json en diferente idioma
-    -Acceso a formulario de contactoo
-    -logOut
-    -Información de la actualidad Dia o noche, en caso de día si es soleado, nublado o lluvia, temperatura actual y sencación térmica
-    -previsión por horas yendo a la hora actual del día actual, en la que aparece hora, icono de soleado, nublado o lluvia.
-    -previsión de los proxímos 7 días contando hoy. en el que aparce, el día, temp mínima, icono de soleado, nublado o lluvía con porcentaje de probabilidad.
-    -sabías qué, que es un apartado extra en el que se muestran curisidades sobre metereología, en el idioma seleccionado.
--Contacto
-    -Formalario de contacto, con cambio de idioma, y comprobaciones en los value de los campos.
+## Funcionalidades de la App
+
+### Registro y Login
+- Registro y login con base de datos local usando **FLOOR**.
+- Se puede cambiar el idioma de la app desde cualquiera de estas pantallas.
+
+### Previsión del Tiempo (API: [open-meteo.com](https://open-meteo.com/))
+
+En la vista de previsión:
+- Selección de idioma entre **inglés** y **español**, controlado por **intl**. También aplica para la sección *"¿Sabías qué?"* usando JSON en diferentes idiomas.
+- Acceso al formulario de contacto.
+- **Cerrar sesión (Log out).**
+- Información del momento actual: si es de día o noche. En caso de día, muestra si está soleado, nublado o llueve, junto con la temperatura actual y la sensación térmica.
+- Previsión por horas (desde la hora actual del día), mostrando:
+    - Hora.
+    - Icono correspondiente (soleado, nublado o lluvia).
+
+- Previsión de los próximos **7 días** (incluyendo hoy):
+    - Día.
+    - Temperatura mínima.
+    - Icono (soleado, nublado o lluvia) con porcentaje de probabilidad.
+
+- **"¿Sabías qué?"**: un apartado extra donde se muestran curiosidades sobre meteorología, en el idioma seleccionado.
+
+### Contacto
+- Formulario de contacto:
+    - Cambio de idioma disponible.
+    - Validaciones en los campos del formulario.
