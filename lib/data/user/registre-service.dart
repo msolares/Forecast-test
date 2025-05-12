@@ -1,6 +1,6 @@
-import '../../DataBase.dart';
+import '../../database.dart';
 import '../../domain/user/login.dart';
-import '../ApiClientInterfaz.dart';
+import '../api-client-interfaz.dart';
 
 class RegistreService {
   final ApiClient apiClient;

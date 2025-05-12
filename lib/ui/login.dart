@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injector/injector.dart';
 import 'package:wheathertest/bloc/user/user_bloc.dart';
 import 'package:wheathertest/bloc/user/user_event.dart';
-import 'package:wheathertest/components/flag-selector/BuildFlagSelector.dart';
+import 'package:wheathertest/components/flag-selector/build-flag-selector.dart';
 import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
 import 'package:wheathertest/domain/user/login.dart';
 import 'package:wheathertest/ui/registre.dart';
 import 'package:wheathertest/ui/wather-list.dart';
-import 'package:wheathertest/util/navegacion/Navegacion.dart';
+import 'package:wheathertest/util/navegacion/navegation.dart';
 import '../bloc/user/user_state.dart';
-import '../components/generic/ShowDialog.dart';
+import '../components/generic/show-dialog.dart';
 import '../components/generic/while-you-wait.dart';
 import '../generated/l10n.dart';
 

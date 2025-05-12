@@ -1,10 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:wheathertest/domain/forecast.dart';
 
-import '../../Entorno.dart';
+import '../../enviroment.dart';
 import '../../domain/params.dart';
-import '../ApiClientInterfaz.dart';
+import '../api-client-interfaz.dart';
 
 class ForecastService {
   final ApiClient apiClient;
@@ -14,7 +15,7 @@ class ForecastService {
     var headers = {
       'Content-Type': 'application/json',
     };
-    final baseUrl = '${Entorno.Enviroment()}/${Entorno.version()}/${Entorno.subdomain()}';
+    final baseUrl = '${dotenv.env['API_URL']}/${dotenv.env['VERSION']}/${dotenv.env['SUBDOMAIN']}';
     final uri = Uri.parse(baseUrl).replace(
       queryParameters: {
         'latitude': params.lat.toString(),

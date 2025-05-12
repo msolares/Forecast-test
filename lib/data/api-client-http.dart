@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'ApiClientInterfaz.dart';
+import 'api-client-interfaz.dart';
 
 class HttpApiClient implements ApiClient {
   final http.Client client;

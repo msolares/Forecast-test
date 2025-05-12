@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injector/injector.dart';
 import 'package:wheathertest/bloc/user/user_bloc.dart';
 import 'package:wheathertest/bloc/user/user_event.dart';
-import 'package:wheathertest/components/flag-selector/BuildFlagSelector.dart';
+import 'package:wheathertest/components/flag-selector/build-flag-selector.dart';
 import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
 import 'package:wheathertest/domain/user/login.dart';
 import 'package:wheathertest/ui/wather-list.dart';
-import 'package:wheathertest/util/navegacion/Navegacion.dart';
+import 'package:wheathertest/util/navegacion/navegation.dart';
 import '../bloc/user/user_state.dart';
-import '../components/generic/ShowDialog.dart';
+import '../components/generic/show-dialog.dart';
 import '../generated/l10n.dart';
 
 class RegistrePage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _RegistrePageState extends State<RegistrePage> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  void _reg() {
+  void _onTapRegistre() {
     _userBloc.add(registreEvent(Login(password: _passwordController.text, user: _usernameController.text)));
   }
 
@@ -94,7 +94,7 @@ class _RegistrePageState extends State<RegistrePage> {
                 BuildTextField(
                     controller: _passwordController, label: s.password, icon: Icons.lock, validator: (value) => value == null || value.isEmpty ? s.contrasenarequerida : null, obscureText: true,),
                 const SizedBox(height: 30),
-                ElevatedButtonWidget(s.registrate, _reg),
+                ElevatedButtonWidget(s.registrate, _onTapRegistre),
                 const SizedBox(height: 30,),
                 InkWell(
                   onTap: () => Navegacion().Back(context),

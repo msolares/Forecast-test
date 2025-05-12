@@ -12,14 +12,14 @@ import 'package:wheathertest/domain/forecast.dart';
 import 'package:wheathertest/ui/contact.dart';
 import 'package:wheathertest/ui/login.dart';
 import 'package:wheathertest/util/cities/load-cities.dart';
-import 'package:wheathertest/util/navegacion/Navegacion.dart';
+import 'package:wheathertest/util/navegacion/navegation.dart';
 
 import '../bloc/forecast_bloc.dart';
 import '../bloc/locale/locale_bloc.dart';
 import '../bloc/locale/locale_state.dart';
 import '../components/card-forecast-hour/card-forecast-hour.dart';
 import '../components/card-next-days/card-next-days.dart';
-import '../components/flag-selector/BuildFlagSelector.dart';
+import '../components/flag-selector/build-flag-selector.dart';
 import '../components/generic/while-you-wait.dart';
 import '../domain/city.dart';
 import '../domain/params.dart';

@@ -1,4 +1,4 @@
-import 'database/Database.dart';
+import 'database/database.dart';
 
 class Database {
   static late final AppDatabase database;

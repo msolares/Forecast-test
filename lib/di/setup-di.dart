@@ -4,7 +4,7 @@ import 'package:injector/injector.dart';
 import 'package:wheathertest/bloc/forecast_bloc.dart';
 import 'package:wheathertest/bloc/locale/locale_bloc.dart';
 import 'package:wheathertest/bloc/user/user_bloc.dart';
-import 'package:wheathertest/data/do-you-know/FraseLoader.dart';
+import 'package:wheathertest/data/do-you-know/phrase-loader.dart';
 import 'package:wheathertest/data/do-you-know/local-provider.dart';
 import 'package:wheathertest/data/forecast/forecast-respository.dart';
 import 'package:wheathertest/data/forecast/forecast-service.dart';
@@ -15,9 +15,9 @@ import 'package:wheathertest/data/user/registre-service.dart';
 import 'package:wheathertest/use-cases/get-forecast-use-case.dart';
 import 'package:wheathertest/use-cases/get-frases-use-case.dart';
 import 'package:wheathertest/use-cases/login.dart';
-import 'package:wheathertest/use-cases/whatHourIsNow.dart';
-import '../data/ApiClientHttp.dart';
-import '../data/ApiClientInterfaz.dart';
+import 'package:wheathertest/use-cases/what-hourIs-now.dart';
+import '../data/api-client-http.dart';
+import '../data/api-client-interfaz.dart';
 import '../use-cases/registre-use-case.dart';
 
 void setupDI() {

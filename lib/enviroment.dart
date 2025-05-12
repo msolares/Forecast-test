@@ -1,5 +1,5 @@
-class Entorno {
-  static String Enviroment (){
+class Enviroment {
+  static String EnviromentMeteo (){
     return "https://api.open-meteo.com";
   }
 

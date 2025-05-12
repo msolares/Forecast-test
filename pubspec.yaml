@@ -46,6 +46,7 @@ dependencies:
   floor: ^1.5.0
   mocktail: ^1.0.0
   flutter_launcher_icons: ^0.14.3
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,7 @@ dev_dependencies:
   flutter_localizations:
     sdk: flutter
   floor_generator: ^1.5.0
+
 
 dependency_overrides:
   source_gen: ^2.0.0
@@ -94,6 +96,9 @@ flutter:
     - assets/flags/us.png
     - assets/json/frases-es.json
     - assets/json/frases-en.json
+    - .env.development
+    - .env.production
+    - .env.staging
 
   #   - images/a_dot_ham.jpeg
 

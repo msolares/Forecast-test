@@ -4,7 +4,7 @@ import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
 import 'package:wheathertest/generated/l10n.dart';
 
-import '../components/flag-selector/BuildFlagSelector.dart';
+import '../components/flag-selector/build-flag-selector.dart';
 
 class ContactFormPage extends StatefulWidget {
   const ContactFormPage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wheathertest/components/flag-selector/BuidFlag.dart';
+import 'package:wheathertest/components/flag-selector/buid-flag.dart';
 
 class BuildFlagSeletor extends StatelessWidget {
   const BuildFlagSeletor({super.key});

@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:wheathertest/domain/do-you-know.dart';
 import 'package:wheathertest/use-cases/get-forecast-use-case.dart';
-import 'package:wheathertest/use-cases/whatHourIsNow.dart';
+import 'package:wheathertest/use-cases/what-hourIs-now.dart';
 
 import '../use-cases/get-frases-use-case.dart';
 import 'forecast_event.dart';
