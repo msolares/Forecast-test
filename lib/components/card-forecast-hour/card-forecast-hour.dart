@@ -9,7 +9,7 @@ import 'package:wheathertest/extension-functions/hour-format.dart';
 
 import '../../bloc/forecast_bloc.dart';
 import '../../bloc/forecast_state.dart';
-import '../../domain/hourly.dart';
+import '../../domain/hourly_dto.dart';
 import '../../generated/l10n.dart';
 import 'item-forecast-hour.dart';
 

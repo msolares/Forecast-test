@@ -7,7 +7,7 @@ class LoginUseCase {
   LoginRepository _loginRepository;
   LoginUseCase (this._loginRepository);
 
-  Future<LoginResponse> loginUseCase(Login login) async {
+  Future<LoginResponseMdl> loginUseCase(LoginMdl login) async {
     return await _loginRepository.login(login);
   }
 }

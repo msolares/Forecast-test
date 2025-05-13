@@ -9,14 +9,14 @@ class UserState with _$UserState {
   const UserState._();
   const factory UserState.initialState() = InitialState;
   const factory UserState.loadingState(bool load) = LoadingState;
-  const factory UserState.loginState(LoginResponse loginResponse) = LoginState;
+  const factory UserState.loginState(LoginResponseMdl loginResponse) = LoginState;
   const factory UserState.logOutState(bool logOut) = LogOutState;
   const factory UserState.registreState(bool registre) = RegistreState;
 
   T when<T>({
     required T Function() initialState,
     required T Function(bool load) loadingState,
-    required T Function(LoginResponse loginResponse) loginState,
+    required T Function(LoginResponseMdl loginResponse) loginState,
     required T Function(bool logOut) logOutState,
     required T Function(bool registre) registreState,
   }) {

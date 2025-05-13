@@ -7,7 +7,7 @@ class RegistreService {
 
   RegistreService(this.apiClient);
 
-  Future<bool> registre(Login login) async {
+  Future<bool> registre(LoginMdl login) async {
     var headers = {
       'Content-Type': 'application/json',
     };

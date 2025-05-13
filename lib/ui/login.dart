@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController = TextEditingController();
 
   void _login() {
-    _userBloc.add(loginEvent(Login(password: _passwordController.text, user: _usernameController.text)));
+    _userBloc.add(loginEvent(LoginMdl(password: _passwordController.text, user: _usernameController.text)));
   }
 
   @override

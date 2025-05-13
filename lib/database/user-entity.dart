@@ -19,7 +19,7 @@ class LoginEntity {
 }
 
 extension ListaEntityConversion on LoginEntity{
-  Login convertToLista (){
-    return Login(user: username, password: password);
+  LoginMdl convertToLista (){
+    return LoginMdl( username,  password);
   }
 }

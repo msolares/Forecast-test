@@ -1,4 +1,4 @@
-import 'package:wheathertest/domain/do-you-know.dart';
+import 'package:wheathertest/domain/do_you_know_dto.dart';
 import '../data/do-you-know/phrase-loader.dart';
 
 class GetPhrasesUseCase {

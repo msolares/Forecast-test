@@ -123,7 +123,7 @@ class _$LoadingStateCopyWithImpl<$Res> implements $LoadingStateCopyWith<$Res> {
 class GetForecastState extends ForecastState {
   const GetForecastState(this.forecast) : super._();
 
-  final Forecast forecast;
+  final ForecastMdl forecast;
 
   /// Create a copy of ForecastState
   /// with the given fields replaced by the non-null parameter values.
@@ -157,9 +157,7 @@ abstract mixin class $GetForecastStateCopyWith<$Res>
           GetForecastState value, $Res Function(GetForecastState) _then) =
       _$GetForecastStateCopyWithImpl;
   @useResult
-  $Res call({Forecast forecast});
-
-  $ForecastCopyWith<$Res> get forecast;
+  $Res call({ForecastMdl forecast});
 }
 
 /// @nodoc
@@ -180,18 +178,8 @@ class _$GetForecastStateCopyWithImpl<$Res>
       null == forecast
           ? _self.forecast
           : forecast // ignore: cast_nullable_to_non_nullable
-              as Forecast,
+              as ForecastMdl,
     ));
-  }
-
-  /// Create a copy of ForecastState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ForecastCopyWith<$Res> get forecast {
-    return $ForecastCopyWith<$Res>(_self.forecast, (value) {
-      return _then(_self.copyWith(forecast: value));
-    });
   }
 }
 
@@ -351,13 +339,14 @@ class UploadedPhrases extends ForecastState {
         (other.runtimeType == runtimeType &&
             other is UploadedPhrases &&
             const DeepCollectionEquality().equals(other._phrases, _phrases) &&
-            (identical(other.phraseNow, phraseNow) ||
-                other.phraseNow == phraseNow));
+            const DeepCollectionEquality().equals(other.phraseNow, phraseNow));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_phrases), phraseNow);
+      runtimeType,
+      const DeepCollectionEquality().hash(_phrases),
+      const DeepCollectionEquality().hash(phraseNow));
 
   @override
   String toString() {
@@ -373,8 +362,6 @@ abstract mixin class $UploadedPhrasesCopyWith<$Res>
       _$UploadedPhrasesCopyWithImpl;
   @useResult
   $Res call({List<DoYouKnow> phrases, DoYouKnow phraseNow});
-
-  $DoYouKnowCopyWith<$Res> get phraseNow;
 }
 
 /// @nodoc
@@ -390,28 +377,18 @@ class _$UploadedPhrasesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? phrases = null,
-    Object? phraseNow = null,
+    Object? phraseNow = freezed,
   }) {
     return _then(UploadedPhrases(
       null == phrases
           ? _self._phrases
           : phrases // ignore: cast_nullable_to_non_nullable
               as List<DoYouKnow>,
-      null == phraseNow
+      freezed == phraseNow
           ? _self.phraseNow
           : phraseNow // ignore: cast_nullable_to_non_nullable
               as DoYouKnow,
     ));
-  }
-
-  /// Create a copy of ForecastState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DoYouKnowCopyWith<$Res> get phraseNow {
-    return $DoYouKnowCopyWith<$Res>(_self.phraseNow, (value) {
-      return _then(_self.copyWith(phraseNow: value));
-    });
   }
 }
 

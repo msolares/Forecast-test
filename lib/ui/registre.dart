@@ -28,7 +28,7 @@ class _RegistrePageState extends State<RegistrePage> {
   TextEditingController _passwordController = TextEditingController();
 
   void _onTapRegistre() {
-    _userBloc.add(registreEvent(Login(password: _passwordController.text, user: _usernameController.text)));
+    _userBloc.add(registreEvent(LoginMdl(password: _passwordController.text, user: _usernameController.text)));
   }
 
   @override

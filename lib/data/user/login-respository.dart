@@ -6,5 +6,5 @@ import '../../domain/user/login.dart';
 class LoginRepository {
   LoginService _loginService;
   LoginRepository(this._loginService);
-  Future<LoginResponse> login(Login login) async =>  await _loginService.login(login);
+  Future<LoginResponseMdl> login(LoginMdl login) async =>  await _loginService.login(login);
 }

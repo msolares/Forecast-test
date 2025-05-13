@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-import '../../domain/daily.dart';
+import '../../domain/daily_dto.dart';
 import '../../generated/l10n.dart';
 import '../text/text-standard.dart';
 import 'item-next-day.dart';

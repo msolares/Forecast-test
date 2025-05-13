@@ -60,7 +60,7 @@ class initialEvent implements UserEvent {
 class loginEvent implements UserEvent {
   const loginEvent(this.login);
 
-  final Login login;
+  final LoginMdl login;
 
   /// Create a copy of UserEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -93,9 +93,7 @@ abstract mixin class $loginEventCopyWith<$Res>
           loginEvent value, $Res Function(loginEvent) _then) =
       _$loginEventCopyWithImpl;
   @useResult
-  $Res call({Login login});
-
-  $LoginCopyWith<$Res> get login;
+  $Res call({LoginMdl login});
 }
 
 /// @nodoc
@@ -115,18 +113,8 @@ class _$loginEventCopyWithImpl<$Res> implements $loginEventCopyWith<$Res> {
       null == login
           ? _self.login
           : login // ignore: cast_nullable_to_non_nullable
-              as Login,
+              as LoginMdl,
     ));
-  }
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $LoginCopyWith<$Res> get login {
-    return $LoginCopyWith<$Res>(_self.login, (value) {
-      return _then(_self.copyWith(login: value));
-    });
   }
 }
 
@@ -155,7 +143,7 @@ class logOut implements UserEvent {
 class registreEvent implements UserEvent {
   const registreEvent(this.login);
 
-  final Login login;
+  final LoginMdl login;
 
   /// Create a copy of UserEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -188,9 +176,7 @@ abstract mixin class $registreEventCopyWith<$Res>
           registreEvent value, $Res Function(registreEvent) _then) =
       _$registreEventCopyWithImpl;
   @useResult
-  $Res call({Login login});
-
-  $LoginCopyWith<$Res> get login;
+  $Res call({LoginMdl login});
 }
 
 /// @nodoc
@@ -211,18 +197,8 @@ class _$registreEventCopyWithImpl<$Res>
       null == login
           ? _self.login
           : login // ignore: cast_nullable_to_non_nullable
-              as Login,
+              as LoginMdl,
     ));
-  }
-
-  /// Create a copy of UserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $LoginCopyWith<$Res> get login {
-    return $LoginCopyWith<$Res>(_self.login, (value) {
-      return _then(_self.copyWith(login: value));
-    });
   }
 }
 

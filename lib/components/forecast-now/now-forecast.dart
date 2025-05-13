@@ -4,12 +4,12 @@ import 'package:wheathertest/components/text/text-standard.dart';
 import 'package:wheathertest/components/text/text-temperature.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-import '../../domain/current.dart';
+import '../../domain/forecast/current.dart';
 import '../../generated/l10n.dart';
 
 class NowForecast extends StatelessWidget {
   String city;
-  Current current;
+  CurrentMdl current;
   NowForecast(this.city, this.current);
 
   @override

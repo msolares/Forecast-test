@@ -1,16 +1,10 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'login.dart';
-part 'login-response.freezed.dart';
-part 'login-response.g.dart';
+ import '../../data/models/user/login_dto.dart';
 
-@freezed
-abstract class LoginResponse with _$LoginResponse{
-  const factory LoginResponse({
-    @JsonKey(name: 'status_code')required int StatusCode,
-    String? desc,
-    required Login login,
-  }) = _LoginResponse;
+class LoginResponseMdl {
+    int statusCode;
+    String? desc;
+    Login login;
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) => _$LoginResponseFromJson(json);
+    LoginResponseMdl(this.statusCode, this.desc, this.login);
 }

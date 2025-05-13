@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:wheathertest/domain/forecast.dart';
+import 'package:wheathertest/domain/forecast/forecast.dart';
 
 import '../../enviroment.dart';
-import '../../domain/params.dart';
+import '../../domain/forecast/params.dart';
 import '../api-client-interfaz.dart';
 
 class ForecastService {
   final ApiClient apiClient;
   ForecastService(this.apiClient);
 
-  Future<Forecast> getForecast(Params params) async{
+  Future<ForecastMdl> getForecast(ParamsMdl params) async{
     var headers = {
       'Content-Type': 'application/json',
     };
@@ -30,6 +30,6 @@ class ForecastService {
     final url = uri.toString();
     final response = await apiClient.get(url,  headers);
     print(response);
-    return Forecast.fromJson(json.decode(response));
+    return ForecastMdl.fromJson(json.decode(response));
   }
 }

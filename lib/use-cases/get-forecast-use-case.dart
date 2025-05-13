@@ -1,12 +1,12 @@
 import 'package:wheathertest/data/forecast/forecast-respository.dart';
-import 'package:wheathertest/domain/forecast.dart';
+import 'package:wheathertest/domain/forecast/forecast.dart';
 
-import '../domain/params.dart';
+import '../domain/forecast/params.dart';
 
 class GetForecastUseCase{
   ForecastRepository _forecastRepository;
   GetForecastUseCase(this._forecastRepository);
-  Future<Forecast> GetForecast(Params params) async {
+  Future<ForecastMdl> GetForecast(ParamsMdl params) async {
     return await _forecastRepository.getForecast(params);
   }
 }

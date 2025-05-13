@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
-import 'package:wheathertest/domain/do-you-know.dart';
+import 'package:wheathertest/domain/do_you_know_dto.dart';
 
 import 'local-provider.dart';
 

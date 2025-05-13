@@ -6,8 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:wheathertest/data/forecast/forecast-respository.dart';
 import 'package:wheathertest/data/forecast/forecast-service.dart';
-import 'package:wheathertest/domain/forecast.dart';
-import 'package:wheathertest/domain/params.dart';
+import 'package:wheathertest/domain/forecast/forecast.dart';
+import 'package:wheathertest/domain/forecast/params.dart';
 
 class MockForecastService extends Mock implements ForecastService{}
 
@@ -218,8 +218,8 @@ class MockForecastService extends Mock implements ForecastService{}
     }
 }''';
 
-      Forecast f = Forecast.fromJson(json.decode(js));
-      final mockForecast = Forecast(
+      ForecastMdl f = ForecastMdl.fromJson(json.decode(js));
+      final mockForecast = ForecastMdl(
         current: f.current,
         currentUnits: f.currentUnits,
         daily: f.daily,
@@ -235,19 +235,19 @@ class MockForecastService extends Mock implements ForecastService{}
         utcOffsetSeconds: f.utcOffsetSeconds
       );
 
-      when(() => mockForecastService.getForecast(Params(long:  f.longitude, lat: f.latitude))).thenAnswer((_) async {
+      when(() => mockForecastService.getForecast(ParamsMdl(long:  f.longitude, lat: f.latitude))).thenAnswer((_) async {
         print("Mock ejecutado");
         return mockForecast;
       });
 
       print("Llamando a getMovies() en MoviesRepository...");
-      final result = await forecastRepository.getForecast(Params(long:  f.longitude, lat: f.latitude));
+      final result = await forecastRepository.getForecast(ParamsMdl(long:  f.longitude, lat: f.latitude));
       print("Respuesta recibida: $result");
 
       // Validación
       expect(result, equals(mockForecast));
       // Asegura que se llamó una vez
-      verify(() => mockForecastService.getForecast(Params(long:  f.longitude, lat: f.latitude))).called(1);
+      verify(() => mockForecastService.getForecast(ParamsMdl(long:  f.longitude, lat: f.latitude))).called(1);
       // Verifica que no haya más interacciones
       verifyNoMoreInteractions(mockForecastService);
 

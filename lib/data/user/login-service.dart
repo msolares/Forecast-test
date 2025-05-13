@@ -8,7 +8,7 @@ class LoginService {
 
   LoginService(this.apiClient);
 
-  Future<LoginResponse> login(Login login) async {
+  Future<LoginResponseMdl> login(LoginMdl login) async {
     var headers = {
       'Content-Type': 'application/json',
     };
@@ -19,15 +19,15 @@ class LoginService {
       final user = await Database.database.loginDao.getUserByUserAndPass(
           login.user, login.password);
       if (user != null) {
-        return LoginResponse(
-            StatusCode: 200, login: Login(password: "", user: user.username));
+        return LoginResponseMdl(
+            StatusCode: 200, login: LoginMdl(password: "", user: user.username));
       } else {
-        return LoginResponse(
-            StatusCode: 404, login: Login(password: "", user: ""));
+        return LoginResponseMdl(
+            StatusCode: 404, login: LoginMdl(password: "", user: ""));
       }
     } catch (e) {
-      return LoginResponse(
-          StatusCode: 400, login: Login(password: "", user: ""));
+      return LoginResponseMdl(
+          StatusCode: 400, login: LoginMdl(password: "", user: ""));
     }
   }
 }

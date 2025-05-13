@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
-import 'package:wheathertest/domain/do-you-know.dart';
+import 'package:wheathertest/domain/do_you_know_dto.dart';
 import 'package:wheathertest/use-cases/get-forecast-use-case.dart';
 import 'package:wheathertest/use-cases/what-hourIs-now.dart';
 

@@ -6,7 +6,7 @@ class RegistreUseCase {
   RegistreRepository _registreRepository;
   RegistreUseCase (this._registreRepository);
 
-  Future<bool> registreUseCase(Login login) async {
+  Future<bool> registreUseCase(LoginMdl login) async {
     return await _registreRepository.registre(login);
   }
 }

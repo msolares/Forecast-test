@@ -8,7 +8,7 @@ import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/bloc/user/user_state.dart';
 import 'package:wheathertest/components/forecast-now/now-forecast.dart';
 import 'package:wheathertest/components/phrases/card-phrases.dart';
-import 'package:wheathertest/domain/forecast.dart';
+import 'package:wheathertest/domain/forecast/forecast.dart';
 import 'package:wheathertest/ui/contact.dart';
 import 'package:wheathertest/ui/login.dart';
 import 'package:wheathertest/util/cities/load-cities.dart';
@@ -21,8 +21,8 @@ import '../components/card-forecast-hour/card-forecast-hour.dart';
 import '../components/card-next-days/card-next-days.dart';
 import '../components/flag-selector/build-flag-selector.dart';
 import '../components/generic/while-you-wait.dart';
-import '../domain/city.dart';
-import '../domain/params.dart';
+import '../domain/forecast/city.dart';
+import '../domain/forecast/params.dart';
 import '../generated/l10n.dart';
 
 class WeatherTabView extends StatefulWidget {
@@ -36,18 +36,18 @@ class _WeatherTabViewState extends State<WeatherTabView>
   ForecastBloc _forecastBloc = Injector.appInstance.get<ForecastBloc>();
   UserBloc _userBloc = Injector.appInstance.get<UserBloc>();
   
-  List<City> cities = [City(S.current.londres, 51.507222222222, -0.1275), City(S.current.toronto, 43.670277777778, -79.386666666667), City(S.current.singapur, 1.352083, -103.819836)];
-  late City selectCity;
+  List<CityMdl> cities = [CityMdl(S.current.londres, 51.507222222222, -0.1275), CityMdl(S.current.toronto, 43.670277777778, -79.386666666667), CityMdl(S.current.singapur, 1.352083, -103.819836)];
+  late CityMdl selectCity;
   late TabController _tabController;
   bool _loading = false;
-  Forecast? _forecast;
+  ForecastMdl? _forecast;
   String _phrase = "";
 
 
   @override
   void initState() {
     crearTab();
-    _forecastBloc.add(getForecastEvent(Params(lat: selectCity.lat, long: selectCity.long)));
+    _forecastBloc.add(getForecastEvent(ParamsMdl(lat: selectCity.lat, long: selectCity.long)));
     super.initState();
   }
 
@@ -60,7 +60,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
       setState(() {
         selectCity = selected;
       });
-      _forecastBloc.add(getForecastEvent(Params(lat: selected.lat, long: selected.long)));
+      _forecastBloc.add(getForecastEvent(ParamsMdl(lat: selected.lat, long: selected.long)));
     });
   }
 

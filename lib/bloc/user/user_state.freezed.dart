@@ -123,7 +123,7 @@ class _$LoadingStateCopyWithImpl<$Res> implements $LoadingStateCopyWith<$Res> {
 class LoginState extends UserState {
   const LoginState(this.loginResponse) : super._();
 
-  final LoginResponse loginResponse;
+  final LoginResponseMdl loginResponse;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -157,9 +157,7 @@ abstract mixin class $LoginStateCopyWith<$Res>
           LoginState value, $Res Function(LoginState) _then) =
       _$LoginStateCopyWithImpl;
   @useResult
-  $Res call({LoginResponse loginResponse});
-
-  $LoginResponseCopyWith<$Res> get loginResponse;
+  $Res call({LoginResponseMdl loginResponse});
 }
 
 /// @nodoc
@@ -179,18 +177,8 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
       null == loginResponse
           ? _self.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
-              as LoginResponse,
+              as LoginResponseMdl,
     ));
-  }
-
-  /// Create a copy of UserState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $LoginResponseCopyWith<$Res> get loginResponse {
-    return $LoginResponseCopyWith<$Res>(_self.loginResponse, (value) {
-      return _then(_self.copyWith(loginResponse: value));
-    });
   }
 }
 
