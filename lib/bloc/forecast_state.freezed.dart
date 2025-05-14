@@ -313,18 +313,18 @@ class _$WhatTimeIsNowStateCopyWithImpl<$Res>
 /// @nodoc
 
 class UploadedPhrases extends ForecastState {
-  const UploadedPhrases(final List<DoYouKnow> phrases, this.phraseNow)
+  const UploadedPhrases(final List<DoYouKnowMdl> phrases, this.phraseNow)
       : _phrases = phrases,
         super._();
 
-  final List<DoYouKnow> _phrases;
-  List<DoYouKnow> get phrases {
+  final List<DoYouKnowMdl> _phrases;
+  List<DoYouKnowMdl> get phrases {
     if (_phrases is EqualUnmodifiableListView) return _phrases;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_phrases);
   }
 
-  final DoYouKnow phraseNow;
+  final DoYouKnowMdl phraseNow;
 
   /// Create a copy of ForecastState
   /// with the given fields replaced by the non-null parameter values.
@@ -339,14 +339,13 @@ class UploadedPhrases extends ForecastState {
         (other.runtimeType == runtimeType &&
             other is UploadedPhrases &&
             const DeepCollectionEquality().equals(other._phrases, _phrases) &&
-            const DeepCollectionEquality().equals(other.phraseNow, phraseNow));
+            (identical(other.phraseNow, phraseNow) ||
+                other.phraseNow == phraseNow));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_phrases),
-      const DeepCollectionEquality().hash(phraseNow));
+      runtimeType, const DeepCollectionEquality().hash(_phrases), phraseNow);
 
   @override
   String toString() {
@@ -361,7 +360,7 @@ abstract mixin class $UploadedPhrasesCopyWith<$Res>
           UploadedPhrases value, $Res Function(UploadedPhrases) _then) =
       _$UploadedPhrasesCopyWithImpl;
   @useResult
-  $Res call({List<DoYouKnow> phrases, DoYouKnow phraseNow});
+  $Res call({List<DoYouKnowMdl> phrases, DoYouKnowMdl phraseNow});
 }
 
 /// @nodoc
@@ -377,17 +376,17 @@ class _$UploadedPhrasesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? phrases = null,
-    Object? phraseNow = freezed,
+    Object? phraseNow = null,
   }) {
     return _then(UploadedPhrases(
       null == phrases
           ? _self._phrases
           : phrases // ignore: cast_nullable_to_non_nullable
-              as List<DoYouKnow>,
-      freezed == phraseNow
+              as List<DoYouKnowMdl>,
+      null == phraseNow
           ? _self.phraseNow
           : phraseNow // ignore: cast_nullable_to_non_nullable
-              as DoYouKnow,
+              as DoYouKnowMdl,
     ));
   }
 }

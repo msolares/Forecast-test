@@ -8,7 +8,6 @@ import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/bloc/user/user_state.dart';
 import 'package:wheathertest/components/forecast-now/now-forecast.dart';
 import 'package:wheathertest/components/phrases/card-phrases.dart';
-import 'package:wheathertest/domain/forecast/forecast.dart';
 import 'package:wheathertest/ui/contact.dart';
 import 'package:wheathertest/ui/login.dart';
 import 'package:wheathertest/util/cities/load-cities.dart';
@@ -21,8 +20,9 @@ import '../components/card-forecast-hour/card-forecast-hour.dart';
 import '../components/card-next-days/card-next-days.dart';
 import '../components/flag-selector/build-flag-selector.dart';
 import '../components/generic/while-you-wait.dart';
-import '../domain/forecast/city.dart';
-import '../domain/forecast/params.dart';
+import '../data/models/forecast/params_dto.dart';
+import '../domain/entities/forecast/city.dart';
+import '../domain/entities/forecast/forecast.dart';
 import '../generated/l10n.dart';
 
 class WeatherTabView extends StatefulWidget {
@@ -47,7 +47,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
   @override
   void initState() {
     crearTab();
-    _forecastBloc.add(getForecastEvent(ParamsMdl(lat: selectCity.lat, long: selectCity.long)));
+    _forecastBloc.add(getForecastEvent(Params(lat: selectCity.lat, long: selectCity.long)));
     super.initState();
   }
 
@@ -60,7 +60,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
       setState(() {
         selectCity = selected;
       });
-      _forecastBloc.add(getForecastEvent(ParamsMdl(lat: selected.lat, long: selected.long)));
+      _forecastBloc.add(getForecastEvent(Params(lat: selected.lat, long: selected.long)));
     });
   }
 

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/forecast/do-you-know.dart';
+import '../../../domain/entities/forecast/do-you-know.dart';
+
 
 part 'do_you_know_dto.freezed.dart';
 part 'do_you_know_dto.g.dart';

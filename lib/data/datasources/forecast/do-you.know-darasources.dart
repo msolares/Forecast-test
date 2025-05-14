@@ -1,14 +1,14 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
+
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:wheathertest/domain/entities/forecast/do-you-know.dart';
 
-import '../models/forecast/do_you_know_dto.dart';
-import 'local-provider.dart';
+import '../../do-you-know/local-provider.dart';
 
-class DoYouKnowLoader {
+class DoYouKnowDataSources {
   final LocaleProvider localeProvider;
-  DoYouKnowLoader(this.localeProvider);
+  DoYouKnowDataSources(this.localeProvider);
   Future<List<DoYouKnowMdl>> load(String lg) async {
     final jsonString = await rootBundle.loadString('assets/json/frases-$lg.json');
     return compute(_parseFrases, jsonString);

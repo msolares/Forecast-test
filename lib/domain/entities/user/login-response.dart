@@ -1,10 +1,9 @@
-
- import '../../data/models/user/login_dto.dart';
+import 'login.dart';
 
 class LoginResponseMdl {
     int statusCode;
     String? desc;
-    Login login;
+    LoginMdl login;
 
     LoginResponseMdl(this.statusCode, this.desc, this.login);
 }

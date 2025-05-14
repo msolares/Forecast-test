@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/forecast/daily-units.dart';
+import '../../../domain/entities/forecast/daily-units.dart';
+
 
 part 'daily_units_dto.freezed.dart';
 part 'daily_units_dto.g.dart';

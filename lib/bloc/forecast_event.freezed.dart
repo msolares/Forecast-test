@@ -60,7 +60,7 @@ class initialEvent implements ForecastEvent {
 class getForecastEvent implements ForecastEvent {
   const getForecastEvent(this.params);
 
-  final ParamsMdl params;
+  final Params params;
 
   /// Create a copy of ForecastEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -93,7 +93,9 @@ abstract mixin class $getForecastEventCopyWith<$Res>
           getForecastEvent value, $Res Function(getForecastEvent) _then) =
       _$getForecastEventCopyWithImpl;
   @useResult
-  $Res call({ParamsMdl params});
+  $Res call({Params params});
+
+  $ParamsCopyWith<$Res> get params;
 }
 
 /// @nodoc
@@ -114,8 +116,18 @@ class _$getForecastEventCopyWithImpl<$Res>
       null == params
           ? _self.params
           : params // ignore: cast_nullable_to_non_nullable
-              as ParamsMdl,
+              as Params,
     ));
+  }
+
+  /// Create a copy of ForecastEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ParamsCopyWith<$Res> get params {
+    return $ParamsCopyWith<$Res>(_self.params, (value) {
+      return _then(_self.copyWith(params: value));
+    });
   }
 }
 

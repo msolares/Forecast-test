@@ -1,6 +1,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wheathertest/domain/user/login-response.dart';
+import '../../domain/entities/user/login-response.dart';
 
 part 'user_state.freezed.dart';
 

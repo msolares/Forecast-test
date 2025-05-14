@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/bloc/user/user_state.dart';
-import 'package:wheathertest/use-cases/login.dart';
-import 'package:wheathertest/use-cases/registre-use-case.dart';
+
+import '../../domain/use-cases/user/get-user-login-use-case.dart';
+import '../../domain/use-cases/user/get-user-registre-use-case.dart';
 
 
 class UserBloc extends Bloc<UserEvent, UserState> {

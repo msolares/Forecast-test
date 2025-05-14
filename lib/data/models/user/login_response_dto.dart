@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wheathertest/domain/user/login.dart';
-import '../../../domain/user/login-response.dart';
+import '../../../domain/entities/user/login-response.dart';
 import 'login_dto.dart';
 
 part 'login_response_dto.freezed.dart';
@@ -20,7 +19,7 @@ abstract class LoginResponse with _$LoginResponse {
   factory LoginResponse.fromDomain(LoginResponseMdl model) => LoginResponse(
     statusCode: model.statusCode,
     desc: model.desc,
-    login: Login.fromDomain(model.login as LoginMdl),
+    login: Login.fromDomain(model.login),
   );
 }
 
@@ -28,6 +27,6 @@ extension LoginResponseMapper on LoginResponse {
   LoginResponseMdl toDomain() => LoginResponseMdl(
     statusCode,
     desc,
-    login.toDomain() as Login,
+    login.toDomain(),
   );
 }

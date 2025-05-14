@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../domain/forecast/city.dart';
+import '../../domain/entities/forecast/city.dart';
 import '../../generated/l10n.dart';
 
 class LoadCities {

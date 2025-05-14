@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../domain/forecast/daily.dart';
+
+import '../../../domain/entities/forecast/daily.dart';
 
 part 'daily_dto.freezed.dart';
 part 'daily_dto.g.dart';

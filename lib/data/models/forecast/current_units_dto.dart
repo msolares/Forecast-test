@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/forecast/currents-units.dart';
+import '../../../domain/entities/forecast/currents-units.dart';
+
 
 part 'current_units_dto.freezed.dart';
 part 'current_units_dto.g.dart';

@@ -6,11 +6,10 @@ import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/components/flag-selector/build-flag-selector.dart';
 import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
-import 'package:wheathertest/domain/user/login.dart';
-import 'package:wheathertest/ui/wather-list.dart';
 import 'package:wheathertest/util/navegacion/navegation.dart';
 import '../bloc/user/user_state.dart';
 import '../components/generic/show-dialog.dart';
+import '../data/models/user/login_dto.dart';
 import '../generated/l10n.dart';
 
 class RegistrePage extends StatefulWidget {
@@ -28,7 +27,7 @@ class _RegistrePageState extends State<RegistrePage> {
   TextEditingController _passwordController = TextEditingController();
 
   void _onTapRegistre() {
-    _userBloc.add(registreEvent(LoginMdl(password: _passwordController.text, user: _usernameController.text)));
+    _userBloc.add(registreEvent(Login(user:  _passwordController.text, password:  _usernameController.text)));
   }
 
   @override

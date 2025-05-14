@@ -4,17 +4,18 @@ import 'package:injector/injector.dart';
 import 'package:wheathertest/bloc/forecast_event.dart';
 import 'package:wheathertest/components/text/text-standard.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:wheathertest/domain/entities/forecast/hourly.dart';
 import 'package:wheathertest/extension-functions/change-temp.dart';
 import 'package:wheathertest/extension-functions/hour-format.dart';
 
 import '../../bloc/forecast_bloc.dart';
 import '../../bloc/forecast_state.dart';
-import '../../domain/hourly_dto.dart';
+import '../../data/models/forecast/hourly_dto.dart';
 import '../../generated/l10n.dart';
 import 'item-forecast-hour.dart';
 
 class CardForecastHour extends StatefulWidget {
-  Hourly _hourly;
+  HourlyMdl _hourly;
   CardForecastHour(this._hourly);
 
   @override

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../domain/forecast/hourly.dart';
+import '../../../domain/entities/forecast/hourly.dart';
 
 part 'hourly_dto.freezed.dart';
 part 'hourly_dto.g.dart';

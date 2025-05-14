@@ -1,12 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wheathertest/domain/forecast/current.dart';
-import 'package:wheathertest/domain/forecast/currents-units.dart';
-import 'package:wheathertest/domain/forecast/daily-units.dart';
-import 'package:wheathertest/domain/forecast/daily.dart';
-import 'package:wheathertest/domain/forecast/hourly-units.dart';
-import 'package:wheathertest/domain/forecast/hourly.dart';
-import '../../../domain/forecast/forecast.dart';
-
+import '../../../domain/entities/forecast/forecast.dart';
 import 'current_dto.dart';
 import 'current_units_dto.dart';
 import 'daily_dto.dart';
@@ -45,12 +38,12 @@ abstract class Forecast with _$Forecast {
     timezone: model.timezone,
     timezoneAbbreviation: model.timezoneAbbreviation,
     elevation: model.elevation,
-    currentUnits: CurrentUnits.fromDomain(model.currentUnits as CurrentUnitsMdl),
-    current: Current.fromDomain(model.current as CurrentMdl),
-    hourlyUnits: HourlyUnits.fromDomain(model.hourlyUnits as HourlyUnitsMdl),
-    hourly: Hourly.fromDomain(model.hourly as HourlyMdl),
-    dailyUnits: DailyUnits.fromDomain(model.dailyUnits as DailyUnitsMdl),
-    daily: Daily.fromDomain(model.daily as DailyMdl),
+    currentUnits: CurrentUnits.fromDomain(model.currentUnits),
+    current: Current.fromDomain(model.current),
+    hourlyUnits: HourlyUnits.fromDomain(model.hourlyUnits),
+    hourly: Hourly.fromDomain(model.hourly),
+    dailyUnits: DailyUnits.fromDomain(model.dailyUnits),
+    daily: Daily.fromDomain(model.daily),
   );
 }
 
@@ -63,11 +56,11 @@ extension ForecastMapper on Forecast {
     timezone,
     timezoneAbbreviation,
     elevation,
-    currentUnits.toDomain() as CurrentUnits,
-    current.toDomain() as Current,
-    hourlyUnits.toDomain() as HourlyUnits,
-    hourly.toDomain() as Hourly,
-    dailyUnits.toDomain() as DailyUnits,
-    daily.toDomain() as Daily,
+    currentUnits.toDomain(),
+    current.toDomain(),
+    hourlyUnits.toDomain(),
+    hourly.toDomain(),
+    dailyUnits.toDomain(),
+    daily.toDomain(),
   );
 }

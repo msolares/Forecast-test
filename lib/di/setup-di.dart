@@ -1,24 +1,25 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:injector/injector.dart';
 import 'package:wheathertest/bloc/forecast_bloc.dart';
 import 'package:wheathertest/bloc/locale/locale_bloc.dart';
 import 'package:wheathertest/bloc/user/user_bloc.dart';
+import 'package:wheathertest/data/datasources/forecast/forecast-datasources.dart';
+import 'package:wheathertest/data/datasources/user/login-datasource.dart';
+import 'package:wheathertest/data/datasources/user/registre-datasource.dart';
 import 'package:wheathertest/data/do-you-know/phrase-loader.dart';
 import 'package:wheathertest/data/do-you-know/local-provider.dart';
-import 'package:wheathertest/data/forecast/forecast-respository.dart';
-import 'package:wheathertest/data/forecast/forecast-service.dart';
-import 'package:wheathertest/data/user/login-respository.dart';
-import 'package:wheathertest/data/user/login-service.dart';
-import 'package:wheathertest/data/user/registre-respository.dart';
-import 'package:wheathertest/data/user/registre-service.dart';
-import 'package:wheathertest/use-cases/get-forecast-use-case.dart';
-import 'package:wheathertest/use-cases/get-frases-use-case.dart';
-import 'package:wheathertest/use-cases/login.dart';
-import 'package:wheathertest/use-cases/what-hourIs-now.dart';
+import 'package:wheathertest/data/repositories/user/user-respository-impl.dart';
+import 'package:wheathertest/domain/repositories/user/user-repository.dart';
+import 'package:wheathertest/domain/use-cases/forecast/get-do-you-know-use-case.dart';
 import '../data/api-client-http.dart';
 import '../data/api-client-interfaz.dart';
-import '../use-cases/registre-use-case.dart';
+import '../data/repositories/forecast/forecast-respository-impl.dart';
+import '../domain/repositories/forecast/forecast-repository.dart';
+import '../domain/use-cases/forecast/get-forecast-use-case.dart';
+import '../domain/use-cases/user/get-user-login-use-case.dart';
+import '../domain/use-cases/user/get-user-registre-use-case.dart';
+import '../use-cases/what-hourIs-now.dart';
 
 void setupDI() {
   final injector = Injector.appInstance;
@@ -35,19 +36,19 @@ void setupDI() {
   );
 
   // Frases con LocaleProvider
-  injector.registerSingleton<FraseLoader>(
-        () => FraseLoader(injector.get<LocaleProvider>()),
+  injector.registerSingleton<DoYouKnowLoader>(
+        () => DoYouKnowLoader(injector.get<LocaleProvider>()),
   );
-  injector.registerSingleton<GetPhrasesUseCase>(
-        () => GetPhrasesUseCase(injector.get<FraseLoader>()),
+  injector.registerSingleton<DoYouKnowUseCase>(
+        () => DoYouKnowUseCase(injector.get<DoYouKnowLoader>()),
   );
 
   // Forecast
-  injector.registerSingleton<ForecastService>(
-        () => ForecastService(injector.get<ApiClient>()),
+  injector.registerSingleton<ForecastDataSource>(
+        () => ForecastDataSource(injector.get<ApiClient>()),
   );
   injector.registerSingleton<ForecastRepository>(
-        () => ForecastRepository(injector.get<ForecastService>()),
+        () => ForecastRepositoryImpl(injector.get<ForecastDataSource>()),
   );
   injector.registerSingleton<GetForecastUseCase>(
         () => GetForecastUseCase(injector.get<ForecastRepository>()),
@@ -61,29 +62,27 @@ void setupDI() {
         () => ForecastBloc(
       injector.get<GetForecastUseCase>(),
       injector.get<WhatHouIsNowUseCase>(),
-      injector.get<GetPhrasesUseCase>(),
+      injector.get<DoYouKnowUseCase>(),
     ),
   );
 
   // Usuario
-  injector.registerSingleton<LoginService>(
-        () => LoginService(injector.get<ApiClient>()),
+  injector.registerSingleton<LoginDataSource>(
+        () => LoginDataSource(injector.get<ApiClient>()),
   );
-  injector.registerSingleton<LoginRepository>(
-        () => LoginRepository(injector.get<LoginService>()),
+  injector.registerSingleton<UserRepository>(
+        () => UserRepositoryImpl(injector.get<LoginDataSource>(),injector.get<RegistreDataSource>(),),
   );
   injector.registerSingleton<LoginUseCase>(
-        () => LoginUseCase(injector.get<LoginRepository>()),
+        () => LoginUseCase(injector.get<UserRepository>()),
   );
 
-  injector.registerSingleton<RegistreService>(
-        () => RegistreService(injector.get<ApiClient>()),
+  injector.registerSingleton<RegistreDataSource>(
+        () => RegistreDataSource(injector.get<ApiClient>()),
   );
-  injector.registerSingleton<RegistreRepository>(
-        () => RegistreRepository(injector.get<RegistreService>()),
-  );
+
   injector.registerSingleton<RegistreUseCase>(
-        () => RegistreUseCase(injector.get<RegistreRepository>()),
+        () => RegistreUseCase(injector.get<UserRepository>()),
   );
 
   injector.registerSingleton<UserBloc>(

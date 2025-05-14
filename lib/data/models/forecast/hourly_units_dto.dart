@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/forecast/hourly-units.dart';
+import '../../../domain/entities/forecast/hourly-units.dart';
 
 part 'hourly_units_dto.freezed.dart';
 part 'hourly_units_dto.g.dart';

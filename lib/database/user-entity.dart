@@ -1,8 +1,5 @@
-
 import 'package:floor/floor.dart';
-
-import '../domain/user/login.dart';
-
+import '../domain/entities/user/login.dart';
 
 @Entity(tableName: 'user')
 class LoginEntity {

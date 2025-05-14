@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../domain/user/login.dart';
+import 'package:wheathertest/database/user-entity.dart';
+
+import '../../../domain/entities/user/login.dart';
 
 part 'login_dto.freezed.dart';
 part 'login_dto.g.dart';
@@ -24,4 +26,8 @@ extension LoginMapper on Login {
     user,
     password,
   );
+}
+
+extension LoginMapperBd on Login {
+  LoginEntity toBd() => LoginEntity(username: user, password: password);
 }

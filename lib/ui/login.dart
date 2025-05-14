@@ -6,13 +6,14 @@ import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/components/flag-selector/build-flag-selector.dart';
 import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
-import 'package:wheathertest/domain/user/login.dart';
 import 'package:wheathertest/ui/registre.dart';
 import 'package:wheathertest/ui/wather-list.dart';
 import 'package:wheathertest/util/navegacion/navegation.dart';
 import '../bloc/user/user_state.dart';
 import '../components/generic/show-dialog.dart';
 import '../components/generic/while-you-wait.dart';
+import '../data/models/user/login_dto.dart';
+import '../domain/entities/user/login.dart';
 import '../generated/l10n.dart';
 
 class LoginPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController = TextEditingController();
 
   void _login() {
-    _userBloc.add(loginEvent(LoginMdl(password: _passwordController.text, user: _usernameController.text)));
+    _userBloc.add(loginEvent(Login(user: _passwordController.text, password:  _usernameController.text)));
   }
 
   @override
@@ -48,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 });
               },
               loginState: (login){
-                if (login.StatusCode == 200 || login.StatusCode == 201){
+                if (login.statusCode == 200 || login.statusCode == 201){
                   Navegacion().goToFull(context, WeatherTabView());
                 }else{
                   Navigator.of(context).push(

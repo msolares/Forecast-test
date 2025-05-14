@@ -2,27 +2,24 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
-import 'package:wheathertest/domain/do_you_know_dto.dart';
-import 'package:wheathertest/use-cases/get-forecast-use-case.dart';
+import 'package:wheathertest/domain/entities/forecast/do-you-know.dart';
 import 'package:wheathertest/use-cases/what-hourIs-now.dart';
-
-import '../use-cases/get-frases-use-case.dart';
+import '../domain/use-cases/forecast/get-do-you-know-use-case.dart';
+import '../domain/use-cases/forecast/get-forecast-use-case.dart';
 import 'forecast_event.dart';
 import 'forecast_state.dart';
 
 class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
   GetForecastUseCase _getForecastUseCase;
   WhatHouIsNowUseCase _whatHouIsNowUseCase;
-  GetPhrasesUseCase _getFrases;
+  DoYouKnowUseCase _doYoukNowUseCase;
   Timer? _timer;
-  List<DoYouKnow> _frases = [];
+  List<DoYouKnowMdl> _frases = [];
 
-  ForecastBloc(this._getForecastUseCase, this._whatHouIsNowUseCase, this._getFrases) : super(ForecastState.initialState()) {
-
-
+  ForecastBloc(this._getForecastUseCase, this._whatHouIsNowUseCase, this._doYoukNowUseCase) : super(ForecastState.initialState()) {
     on<getForecastEvent>((event, emit) async{
       emit(ForecastState.loadingState(true));
-      final forecast = await _getForecastUseCase.GetForecast(event.params);
+      final forecast = await _getForecastUseCase.call(event.params);
       emit(ForecastState.getForecastState(forecast));
     });
     on<whatTimeIsNow>((event, emit) async{
@@ -30,7 +27,7 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
       emit(ForecastState.whatTimeIdNowState(hour));
     });
     on<phraseloading>((event, emit) async{
-      _frases = await _getFrases(event.lg);
+      _frases = await _doYoukNowUseCase.call(event.lg);
       _startTimer(emit);
     });
     on<updatePhraseRandom>((event, emit) async{

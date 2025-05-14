@@ -1,7 +1,8 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../domain/forecast/current.dart';
+
+import '../../../domain/entities/forecast/current.dart';
 
 part 'current_dto.freezed.dart';
 part 'current_dto.g.dart';
