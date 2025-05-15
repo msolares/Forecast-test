@@ -51,7 +51,7 @@ class InitialState extends ForecastState {
 
   @override
   String toString() {
-    return 'ForecastState.initialState()';
+    return 'ForecastState.initial()';
   }
 }
 
@@ -82,7 +82,7 @@ class LoadingState extends ForecastState {
 
   @override
   String toString() {
-    return 'ForecastState.loadingState(load: $load)';
+    return 'ForecastState.loading(load: $load)';
   }
 }
 
@@ -146,7 +146,7 @@ class GetForecastState extends ForecastState {
 
   @override
   String toString() {
-    return 'ForecastState.getForecastState(forecast: $forecast)';
+    return 'ForecastState.getForecast(forecast: $forecast)';
   }
 }
 
@@ -210,7 +210,7 @@ class ErrorState extends ForecastState {
 
   @override
   String toString() {
-    return 'ForecastState.errorState(message: $message)';
+    return 'ForecastState.error(message: $message)';
   }
 }
 
@@ -273,7 +273,7 @@ class WhatTimeIsNowState extends ForecastState {
 
   @override
   String toString() {
-    return 'ForecastState.whatTimeIdNowState(hour: $hour)';
+    return 'ForecastState.whatTimeIdNow(hour: $hour)';
   }
 }
 
@@ -312,8 +312,8 @@ class _$WhatTimeIsNowStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class UploadedPhrases extends ForecastState {
-  const UploadedPhrases(final List<DoYouKnowMdl> phrases, this.phraseNow)
+class UploadedPhrasesState extends ForecastState {
+  const UploadedPhrasesState(final List<DoYouKnowMdl> phrases, this.phraseNow)
       : _phrases = phrases,
         super._();
 
@@ -330,14 +330,15 @@ class UploadedPhrases extends ForecastState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $UploadedPhrasesCopyWith<UploadedPhrases> get copyWith =>
-      _$UploadedPhrasesCopyWithImpl<UploadedPhrases>(this, _$identity);
+  $UploadedPhrasesStateCopyWith<UploadedPhrasesState> get copyWith =>
+      _$UploadedPhrasesStateCopyWithImpl<UploadedPhrasesState>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UploadedPhrases &&
+            other is UploadedPhrasesState &&
             const DeepCollectionEquality().equals(other._phrases, _phrases) &&
             (identical(other.phraseNow, phraseNow) ||
                 other.phraseNow == phraseNow));
@@ -354,22 +355,22 @@ class UploadedPhrases extends ForecastState {
 }
 
 /// @nodoc
-abstract mixin class $UploadedPhrasesCopyWith<$Res>
+abstract mixin class $UploadedPhrasesStateCopyWith<$Res>
     implements $ForecastStateCopyWith<$Res> {
-  factory $UploadedPhrasesCopyWith(
-          UploadedPhrases value, $Res Function(UploadedPhrases) _then) =
-      _$UploadedPhrasesCopyWithImpl;
+  factory $UploadedPhrasesStateCopyWith(UploadedPhrasesState value,
+          $Res Function(UploadedPhrasesState) _then) =
+      _$UploadedPhrasesStateCopyWithImpl;
   @useResult
   $Res call({List<DoYouKnowMdl> phrases, DoYouKnowMdl phraseNow});
 }
 
 /// @nodoc
-class _$UploadedPhrasesCopyWithImpl<$Res>
-    implements $UploadedPhrasesCopyWith<$Res> {
-  _$UploadedPhrasesCopyWithImpl(this._self, this._then);
+class _$UploadedPhrasesStateCopyWithImpl<$Res>
+    implements $UploadedPhrasesStateCopyWith<$Res> {
+  _$UploadedPhrasesStateCopyWithImpl(this._self, this._then);
 
-  final UploadedPhrases _self;
-  final $Res Function(UploadedPhrases) _then;
+  final UploadedPhrasesState _self;
+  final $Res Function(UploadedPhrasesState) _then;
 
   /// Create a copy of ForecastState
   /// with the given fields replaced by the non-null parameter values.
@@ -378,7 +379,7 @@ class _$UploadedPhrasesCopyWithImpl<$Res>
     Object? phrases = null,
     Object? phraseNow = null,
   }) {
-    return _then(UploadedPhrases(
+    return _then(UploadedPhrasesState(
       null == phrases
           ? _self._phrases
           : phrases // ignore: cast_nullable_to_non_nullable

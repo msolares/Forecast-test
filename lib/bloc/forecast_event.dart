@@ -7,9 +7,9 @@ part 'forecast_event.freezed.dart';
 
 @freezed
 abstract class ForecastEvent with _$ForecastEvent {
-  const factory ForecastEvent.initialEvent() = initialEvent;
-  const factory ForecastEvent.getForecastEvent(Params params) = getForecastEvent;
-  const factory ForecastEvent.whatTimeIsNow() = whatTimeIsNow;
-  const factory ForecastEvent.phraseloading (String lg) = phraseloading;
-  const factory ForecastEvent.updatePhraseRandom () = updatePhraseRandom;
+  const factory ForecastEvent.initial() = InitialEvent;
+  const factory ForecastEvent.getForecast(Params params) = GetForecastEvent;
+  const factory ForecastEvent.whatTimeIsNow() = WhatTimeIsNowEvent;
+  const factory ForecastEvent.loadPhrases(String language) = LoadPhrasesEvent;
+  const factory ForecastEvent.updateRandomPhrase() = UpdateRandomPhraseEvent;
 }

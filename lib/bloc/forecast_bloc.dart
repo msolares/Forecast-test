@@ -16,21 +16,21 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
   Timer? _timer;
   List<DoYouKnowMdl> _frases = [];
 
-  ForecastBloc(this._getForecastUseCase, this._whatHouIsNowUseCase, this._doYoukNowUseCase) : super(ForecastState.initialState()) {
-    on<getForecastEvent>((event, emit) async{
-      emit(ForecastState.loadingState(true));
+  ForecastBloc(this._getForecastUseCase, this._whatHouIsNowUseCase, this._doYoukNowUseCase) : super(const ForecastState.initial()) {
+    on<GetForecastEvent>((event, emit) async{
+      emit(const ForecastState.loading(true));
       final forecast = await _getForecastUseCase.call(event.params);
-      emit(ForecastState.getForecastState(forecast));
+      emit(ForecastState.getForecast(forecast));
     });
-    on<whatTimeIsNow>((event, emit) async{
+    on<WhatTimeIsNowEvent>((event, emit) async{
       final hour = _whatHouIsNowUseCase.WhatHour();
-      emit(ForecastState.whatTimeIdNowState(hour));
+      emit(ForecastState.whatTimeIdNow(hour));
     });
-    on<phraseloading>((event, emit) async{
-      _frases = await _doYoukNowUseCase.call(event.lg);
+    on<LoadPhrasesEvent>((event, emit) async{
+      _frases = await _doYoukNowUseCase.call(event.language);
       _startTimer(emit);
     });
-    on<updatePhraseRandom>((event, emit) async{
+    on<UpdateRandomPhraseEvent>((event, emit) async{
       if (_frases.isNotEmpty) {
         final random = Random();
         final nueva = _frases[random.nextInt(_frases.length)];
@@ -41,9 +41,9 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
 
   void _startTimer(Emitter emit) {
     if (_timer != null){_timer?.cancel();}
-    add(ForecastEvent.updatePhraseRandom());
-    _timer = Timer.periodic(Duration(seconds: 10), (_) {
-      add(ForecastEvent.updatePhraseRandom());
+    add(const UpdateRandomPhraseEvent());
+    _timer = Timer.periodic(const Duration(seconds: 10), (_) {
+      add(const UpdateRandomPhraseEvent());
     });
   }
 

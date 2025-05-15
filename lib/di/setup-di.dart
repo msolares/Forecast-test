@@ -7,7 +7,7 @@ import 'package:wheathertest/bloc/user/user_bloc.dart';
 import 'package:wheathertest/data/datasources/forecast/forecast-datasources.dart';
 import 'package:wheathertest/data/datasources/user/login-datasource.dart';
 import 'package:wheathertest/data/datasources/user/registre-datasource.dart';
-import 'package:wheathertest/data/do-you-know/phrase-loader.dart';
+import 'package:wheathertest/data/do-you-know/do-you-know-loader.dart';
 import 'package:wheathertest/data/do-you-know/local-provider.dart';
 import 'package:wheathertest/data/repositories/user/user-respository-impl.dart';
 import 'package:wheathertest/domain/repositories/user/user-repository.dart';

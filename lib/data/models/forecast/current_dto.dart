@@ -34,7 +34,6 @@ abstract class Current with _$Current {
   );
 }
 
-// ✅ Esta extensión debe ir fuera de la clase @freezed
 extension CurrentMapper on Current {
   CurrentMdl toDomain() => CurrentMdl(
     time,

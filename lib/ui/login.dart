@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController = TextEditingController();
 
   void _login() {
-    _userBloc.add(loginEvent(Login(user: _passwordController.text, password:  _usernameController.text)));
+    _userBloc.add(LoginEvent(Login(user: _passwordController.text, password:  _usernameController.text)));
   }
 
   @override
@@ -42,13 +42,13 @@ class _LoginPageState extends State<LoginPage> {
       child: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
           state.when(
-              initialState: (){},
-              loadingState: (load){
+              initial: (){},
+              loading: (load){
                 setState(() {
                   _loading = load;
                 });
               },
-              loginState: (login){
+              login: (login){
                 if (login.statusCode == 200 || login.statusCode == 201){
                   Navegacion().goToFull(context, WeatherTabView());
                 }else{
@@ -60,8 +60,8 @@ class _LoginPageState extends State<LoginPage> {
                   _loading = false;
                 });
               },
-              logOutState: (logout){},
-              registreState: (registre) {}
+              logOut: (logout){},
+              registre: (registre) {}
           );
         },
         child: Scaffold(

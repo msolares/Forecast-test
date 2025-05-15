@@ -27,7 +27,7 @@ class _RegistrePageState extends State<RegistrePage> {
   TextEditingController _passwordController = TextEditingController();
 
   void _onTapRegistre() {
-    _userBloc.add(registreEvent(Login(user:  _passwordController.text, password:  _usernameController.text)));
+    _userBloc.add(RegistreEvent(Login(user:  _passwordController.text, password:  _usernameController.text)));
   }
 
   @override
@@ -38,15 +38,15 @@ class _RegistrePageState extends State<RegistrePage> {
       child: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
           state.when(
-            initialState: (){},
-            loadingState: (load){
+            initial: (){},
+            loading: (load){
               setState(() {
                 _loading = load;
               });
             },
-            loginState: (login){},
-            logOutState: (logout){},
-            registreState: (registre) {
+            login: (login){},
+            logOut: (logout){},
+            registre: (registre) {
               if(registre){
                 Navegacion().Back(context);
               }else{

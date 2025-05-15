@@ -39,10 +39,10 @@ class _CardForecastHourState extends State<CardForecastHour> {
       child: BlocListener<ForecastBloc, ForecastState>(
         listener: (context, state) {
           state.when(
-              initialState: (){},
-              loadingState: (load){},
-              getForecastState: (forecast){},
-              whatTimeIdNowState: (hour){
+              initial: (){},
+              loading: (load){},
+              getForecast: (forecast){},
+              whatTimeIdNow: (hour){
                 setState(() {
                   _itemScrollController.scrollTo(
                     index: int.parse(hour),
@@ -51,7 +51,7 @@ class _CardForecastHourState extends State<CardForecastHour> {
                 });
               },
               uploadedPhrases: (phrases, phrase){},
-              errorState: (errorState){},
+              error: (errorState){},
           );
         },
         child: Card(

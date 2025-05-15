@@ -47,7 +47,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
   @override
   void initState() {
     crearTab();
-    _forecastBloc.add(getForecastEvent(Params(lat: selectCity.lat, long: selectCity.long)));
+    _forecastBloc.add(GetForecastEvent(Params(lat: selectCity.lat, long: selectCity.long)));
     super.initState();
   }
 
@@ -60,7 +60,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
       setState(() {
         selectCity = selected;
       });
-      _forecastBloc.add(getForecastEvent(Params(lat: selected.lat, long: selected.long)));
+      _forecastBloc.add(GetForecastEvent(Params(lat: selected.lat, long: selected.long)));
     });
   }
 
@@ -78,33 +78,33 @@ class _WeatherTabViewState extends State<WeatherTabView>
           BlocListener<ForecastBloc, ForecastState>(
             listener: (context, state) {
               state.when(
-                initialState: () {},
-                loadingState: (load) {
+                initial: () {},
+                loading: (load) {
                   setState(() {
                     _loading = load;
                   });
                 },
-                getForecastState: (forecast) {
+                getForecast: (forecast) {
                   setState(() {
                     _loading = false;
                     _forecast = forecast;
                   });
-                  _forecastBloc.add(ForecastEvent.phraseloading("en"));
+                  _forecastBloc.add(const LoadPhrasesEvent("en"));
                 },
                 uploadedPhrases: (phrases, phrase){
                   setState(() {
                     _phrase = phrase.texto;
                   });
                 },
-                errorState: (error) {},
-                whatTimeIdNowState: (String hour) {},
+                error: (error) {},
+                whatTimeIdNow: (String hour) {},
               );
             },
           ),
           BlocListener<LocaleBloc, LocaleState>(
             listener: (context, state) {
               print('LocaleBloc emitió nuevo locale: ${state.locale}');
-              _forecastBloc.add(ForecastEvent.phraseloading(state.locale.languageCode));
+              _forecastBloc.add(LoadPhrasesEvent(state.locale.languageCode));
               crearTab();
               setState(() {});
             },
@@ -112,13 +112,13 @@ class _WeatherTabViewState extends State<WeatherTabView>
           BlocListener<UserBloc, UserState>(
             listener: (context, state) {
               state.when(
-                  initialState: (){},
-                  loadingState: (load){},
-                  loginState: (login){},
-                  logOutState: (logout){
+                  initial: (){},
+                  loading: (load){},
+                  login: (login){},
+                  logOut: (logout){
                     if (logout) Navegacion().goToFull(context, LoginPage());
                   },
-                  registreState: (registre) {}
+                  registre: (registre) {}
               );
             },
           ),

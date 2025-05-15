@@ -37,13 +37,13 @@ class $ForecastEventCopyWith<$Res> {
 
 /// @nodoc
 
-class initialEvent implements ForecastEvent {
-  const initialEvent();
+class InitialEvent implements ForecastEvent {
+  const InitialEvent();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is initialEvent);
+        (other.runtimeType == runtimeType && other is InitialEvent);
   }
 
   @override
@@ -51,14 +51,14 @@ class initialEvent implements ForecastEvent {
 
   @override
   String toString() {
-    return 'ForecastEvent.initialEvent()';
+    return 'ForecastEvent.initial()';
   }
 }
 
 /// @nodoc
 
-class getForecastEvent implements ForecastEvent {
-  const getForecastEvent(this.params);
+class GetForecastEvent implements ForecastEvent {
+  const GetForecastEvent(this.params);
 
   final Params params;
 
@@ -66,14 +66,14 @@ class getForecastEvent implements ForecastEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $getForecastEventCopyWith<getForecastEvent> get copyWith =>
-      _$getForecastEventCopyWithImpl<getForecastEvent>(this, _$identity);
+  $GetForecastEventCopyWith<GetForecastEvent> get copyWith =>
+      _$GetForecastEventCopyWithImpl<GetForecastEvent>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is getForecastEvent &&
+            other is GetForecastEvent &&
             (identical(other.params, params) || other.params == params));
   }
 
@@ -82,16 +82,16 @@ class getForecastEvent implements ForecastEvent {
 
   @override
   String toString() {
-    return 'ForecastEvent.getForecastEvent(params: $params)';
+    return 'ForecastEvent.getForecast(params: $params)';
   }
 }
 
 /// @nodoc
-abstract mixin class $getForecastEventCopyWith<$Res>
+abstract mixin class $GetForecastEventCopyWith<$Res>
     implements $ForecastEventCopyWith<$Res> {
-  factory $getForecastEventCopyWith(
-          getForecastEvent value, $Res Function(getForecastEvent) _then) =
-      _$getForecastEventCopyWithImpl;
+  factory $GetForecastEventCopyWith(
+          GetForecastEvent value, $Res Function(GetForecastEvent) _then) =
+      _$GetForecastEventCopyWithImpl;
   @useResult
   $Res call({Params params});
 
@@ -99,12 +99,12 @@ abstract mixin class $getForecastEventCopyWith<$Res>
 }
 
 /// @nodoc
-class _$getForecastEventCopyWithImpl<$Res>
-    implements $getForecastEventCopyWith<$Res> {
-  _$getForecastEventCopyWithImpl(this._self, this._then);
+class _$GetForecastEventCopyWithImpl<$Res>
+    implements $GetForecastEventCopyWith<$Res> {
+  _$GetForecastEventCopyWithImpl(this._self, this._then);
 
-  final getForecastEvent _self;
-  final $Res Function(getForecastEvent) _then;
+  final GetForecastEvent _self;
+  final $Res Function(GetForecastEvent) _then;
 
   /// Create a copy of ForecastEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -112,7 +112,7 @@ class _$getForecastEventCopyWithImpl<$Res>
   $Res call({
     Object? params = null,
   }) {
-    return _then(getForecastEvent(
+    return _then(GetForecastEvent(
       null == params
           ? _self.params
           : params // ignore: cast_nullable_to_non_nullable
@@ -133,13 +133,13 @@ class _$getForecastEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class whatTimeIsNow implements ForecastEvent {
-  const whatTimeIsNow();
+class WhatTimeIsNowEvent implements ForecastEvent {
+  const WhatTimeIsNowEvent();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is whatTimeIsNow);
+        (other.runtimeType == runtimeType && other is WhatTimeIsNowEvent);
   }
 
   @override
@@ -153,63 +153,64 @@ class whatTimeIsNow implements ForecastEvent {
 
 /// @nodoc
 
-class phraseloading implements ForecastEvent {
-  const phraseloading(this.lg);
+class LoadPhrasesEvent implements ForecastEvent {
+  const LoadPhrasesEvent(this.language);
 
-  final String lg;
+  final String language;
 
   /// Create a copy of ForecastEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $phraseloadingCopyWith<phraseloading> get copyWith =>
-      _$phraseloadingCopyWithImpl<phraseloading>(this, _$identity);
+  $LoadPhrasesEventCopyWith<LoadPhrasesEvent> get copyWith =>
+      _$LoadPhrasesEventCopyWithImpl<LoadPhrasesEvent>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is phraseloading &&
-            (identical(other.lg, lg) || other.lg == lg));
+            other is LoadPhrasesEvent &&
+            (identical(other.language, language) ||
+                other.language == language));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, lg);
+  int get hashCode => Object.hash(runtimeType, language);
 
   @override
   String toString() {
-    return 'ForecastEvent.phraseloading(lg: $lg)';
+    return 'ForecastEvent.loadPhrases(language: $language)';
   }
 }
 
 /// @nodoc
-abstract mixin class $phraseloadingCopyWith<$Res>
+abstract mixin class $LoadPhrasesEventCopyWith<$Res>
     implements $ForecastEventCopyWith<$Res> {
-  factory $phraseloadingCopyWith(
-          phraseloading value, $Res Function(phraseloading) _then) =
-      _$phraseloadingCopyWithImpl;
+  factory $LoadPhrasesEventCopyWith(
+          LoadPhrasesEvent value, $Res Function(LoadPhrasesEvent) _then) =
+      _$LoadPhrasesEventCopyWithImpl;
   @useResult
-  $Res call({String lg});
+  $Res call({String language});
 }
 
 /// @nodoc
-class _$phraseloadingCopyWithImpl<$Res>
-    implements $phraseloadingCopyWith<$Res> {
-  _$phraseloadingCopyWithImpl(this._self, this._then);
+class _$LoadPhrasesEventCopyWithImpl<$Res>
+    implements $LoadPhrasesEventCopyWith<$Res> {
+  _$LoadPhrasesEventCopyWithImpl(this._self, this._then);
 
-  final phraseloading _self;
-  final $Res Function(phraseloading) _then;
+  final LoadPhrasesEvent _self;
+  final $Res Function(LoadPhrasesEvent) _then;
 
   /// Create a copy of ForecastEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? lg = null,
+    Object? language = null,
   }) {
-    return _then(phraseloading(
-      null == lg
-          ? _self.lg
-          : lg // ignore: cast_nullable_to_non_nullable
+    return _then(LoadPhrasesEvent(
+      null == language
+          ? _self.language
+          : language // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -217,13 +218,13 @@ class _$phraseloadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class updatePhraseRandom implements ForecastEvent {
-  const updatePhraseRandom();
+class UpdateRandomPhraseEvent implements ForecastEvent {
+  const UpdateRandomPhraseEvent();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is updatePhraseRandom);
+        (other.runtimeType == runtimeType && other is UpdateRandomPhraseEvent);
   }
 
   @override
@@ -231,7 +232,7 @@ class updatePhraseRandom implements ForecastEvent {
 
   @override
   String toString() {
-    return 'ForecastEvent.updatePhraseRandom()';
+    return 'ForecastEvent.updateRandomPhrase()';
   }
 }
 

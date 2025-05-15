@@ -51,7 +51,7 @@ class InitialState extends UserState {
 
   @override
   String toString() {
-    return 'UserState.initialState()';
+    return 'UserState.initial()';
   }
 }
 
@@ -82,7 +82,7 @@ class LoadingState extends UserState {
 
   @override
   String toString() {
-    return 'UserState.loadingState(load: $load)';
+    return 'UserState.loading(load: $load)';
   }
 }
 
@@ -146,7 +146,7 @@ class LoginState extends UserState {
 
   @override
   String toString() {
-    return 'UserState.loginState(loginResponse: $loginResponse)';
+    return 'UserState.login(loginResponse: $loginResponse)';
   }
 }
 
@@ -209,7 +209,7 @@ class LogOutState extends UserState {
 
   @override
   String toString() {
-    return 'UserState.logOutState(logOut: $logOut)';
+    return 'UserState.logOut(logOut: $logOut)';
   }
 }
 
@@ -273,7 +273,7 @@ class RegistreState extends UserState {
 
   @override
   String toString() {
-    return 'UserState.registreState(registre: $registre)';
+    return 'UserState.registre(registre: $registre)';
   }
 }
 

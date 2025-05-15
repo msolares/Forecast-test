@@ -7,25 +7,25 @@ part 'user_state.freezed.dart';
 @freezed
 class UserState with _$UserState {
   const UserState._();
-  const factory UserState.initialState() = InitialState;
-  const factory UserState.loadingState(bool load) = LoadingState;
-  const factory UserState.loginState(LoginResponseMdl loginResponse) = LoginState;
-  const factory UserState.logOutState(bool logOut) = LogOutState;
-  const factory UserState.registreState(bool registre) = RegistreState;
+  const factory UserState.initial() = InitialState;
+  const factory UserState.loading(bool load) = LoadingState;
+  const factory UserState.login(LoginResponseMdl loginResponse) = LoginState;
+  const factory UserState.logOut(bool logOut) = LogOutState;
+  const factory UserState.registre(bool registre) = RegistreState;
 
-  T when<T>({
-    required T Function() initialState,
-    required T Function(bool load) loadingState,
-    required T Function(LoginResponseMdl loginResponse) loginState,
-    required T Function(bool logOut) logOutState,
-    required T Function(bool registre) registreState,
+  Object? when<T>({
+    required T Function() initial,
+    required T Function(bool load) loading,
+    required T Function(LoginResponseMdl loginResponse) login,
+    required T Function(bool logOut) logOut,
+    required T Function(bool registre) registre,
   }) {
     return switch (this) {
-      InitialState() => initialState(),
-      LoadingState(:final load) => loadingState(load),
-      LoginState(:final loginResponse) => loginState(loginResponse),
-      LogOutState(:final logOut) => logOutState(logOut),
-      RegistreState(:final registre) => registreState(registre),
+      InitialState() => initial(),
+      LoadingState(:final load) => loading(load),
+      LoginState(:final loginResponse) => login(loginResponse),
+      LogOutState(:final logOut) => logOut,
+      RegistreState(:final registre) => registre,
       // TODO: Handle this case.
       UserState() => throw UnimplementedError(),
     };

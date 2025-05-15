@@ -2,7 +2,7 @@
 
 import 'package:wheathertest/domain/entities/forecast/do-you-know.dart';
 
-import '../../../data/do-you-know/phrase-loader.dart';
+import '../../../data/do-you-know/do-you-know-loader.dart';
 
 class DoYouKnowUseCase {
   final DoYouKnowLoader loader;
