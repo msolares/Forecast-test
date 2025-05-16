@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:wheathertest/ui/contact.dart';
+import 'package:wheathertest/ui/registre.dart';
 import '../../ui/login.dart';
 import '../../ui/wather-list.dart';
 
@@ -25,7 +26,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/registre',
       builder: (context, state) {
-        return const ContactFormPage();
+        return const RegistrePage();
       },
     ),
   ],
