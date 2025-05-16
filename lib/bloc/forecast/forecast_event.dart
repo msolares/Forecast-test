@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../data/models/forecast/params_dto.dart';
-import '../domain/entities/forecast/params.dart';
+import '../../data/models/forecast/params_dto.dart';
 
 part 'forecast_event.freezed.dart';
 

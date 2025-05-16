@@ -3,9 +3,9 @@ import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:wheathertest/domain/entities/forecast/do-you-know.dart';
-import 'package:wheathertest/use-cases/what-hourIs-now.dart';
-import '../domain/use-cases/forecast/get-do-you-know-use-case.dart';
-import '../domain/use-cases/forecast/get-forecast-use-case.dart';
+import 'package:wheathertest/domain/use-cases/forecast/what-hourIs-now.dart';
+import '../../domain/use-cases/forecast/get-do-you-know-use-case.dart';
+import '../../domain/use-cases/forecast/get-forecast-use-case.dart';
 import 'forecast_event.dart';
 import 'forecast_state.dart';
 

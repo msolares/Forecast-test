@@ -6,11 +6,11 @@ import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/components/flag-selector/build-flag-selector.dart';
 import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
-import 'package:wheathertest/util/navegacion/navegation.dart';
 import '../bloc/user/user_state.dart';
 import '../components/generic/show-dialog.dart';
 import '../data/models/user/login_dto.dart';
 import '../generated/l10n.dart';
+import '../util/navegation/navegation.dart';
 
 class RegistrePage extends StatefulWidget {
   const RegistrePage({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class _RegistrePageState extends State<RegistrePage> {
             logOut: (logout){},
             registre: (registre) {
               if(registre){
-                Navegacion().Back(context);
+                NavigationService.back(context);
               }else{
                 Navigator.of(context).push(
                     ShowDialog().dialogBuilder(context, s.aviso, s.nosehapodidoregistrar)
@@ -96,7 +96,7 @@ class _RegistrePageState extends State<RegistrePage> {
                 ElevatedButtonWidget(s.registrate, _onTapRegistre),
                 const SizedBox(height: 30,),
                 InkWell(
-                  onTap: () => Navegacion().Back(context),
+                  onTap: () => NavigationService.back(context),
                   child: Text(
                     s.yatinescuenta,
                     style: const TextStyle(

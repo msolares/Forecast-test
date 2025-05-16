@@ -1,6 +1,6 @@
 import '../generated/l10n.dart';
 
-extension StringToTime on String {
+extension FormatDays on String {
   String toDays() {
     try {
       final dateTime = DateTime.parse(this);
@@ -30,8 +30,7 @@ extension StringToTime on String {
         }
       }
     } catch (e) {
-      // En caso de que la fecha no sea válida, puedes manejar el error aquí
-      return ''; // Valor por defecto en caso de error
+      return '';
     }
   }
 }

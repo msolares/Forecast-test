@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injector/injector.dart';
-import 'package:wheathertest/bloc/forecast_event.dart';
-import 'package:wheathertest/bloc/forecast_state.dart';
 import 'package:wheathertest/bloc/user/user_bloc.dart';
 import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/bloc/user/user_state.dart';
 import 'package:wheathertest/components/forecast-now/now-forecast.dart';
 import 'package:wheathertest/components/phrases/card-phrases.dart';
-import 'package:wheathertest/ui/contact.dart';
-import 'package:wheathertest/ui/login.dart';
 import 'package:wheathertest/util/cities/load-cities.dart';
-import 'package:wheathertest/util/navegacion/navegation.dart';
 
-import '../bloc/forecast_bloc.dart';
+import '../bloc/forecast/forecast_bloc.dart';
+import '../bloc/forecast/forecast_event.dart';
+import '../bloc/forecast/forecast_state.dart';
 import '../bloc/locale/locale_bloc.dart';
 import '../bloc/locale/locale_state.dart';
 import '../components/card-forecast-hour/card-forecast-hour.dart';
@@ -24,6 +21,7 @@ import '../data/models/forecast/params_dto.dart';
 import '../domain/entities/forecast/city.dart';
 import '../domain/entities/forecast/forecast.dart';
 import '../generated/l10n.dart';
+import '../util/navegation/navegation.dart';
 
 class WeatherTabView extends StatefulWidget {
   @override
@@ -116,7 +114,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
                   loading: (load){},
                   login: (login){},
                   logOut: (logout){
-                    if (logout) Navegacion().goToFull(context, LoginPage());
+                    if (logout) NavigationService.goToReplacement(context, "/");
                   },
                   registre: (registre) {}
               );
@@ -136,7 +134,7 @@ class _WeatherTabViewState extends State<WeatherTabView>
                 IconButton(
                   icon: Icon(Icons.email, color: Colors.white),
                   onPressed: () {
-                    Navegacion().goTo(context, ContactFormPage());
+                    NavigationService.goTo(context, '/contact');
                   },
                 ),
                 IconButton(

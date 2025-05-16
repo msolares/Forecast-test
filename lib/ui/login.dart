@@ -6,15 +6,12 @@ import 'package:wheathertest/bloc/user/user_event.dart';
 import 'package:wheathertest/components/flag-selector/build-flag-selector.dart';
 import 'package:wheathertest/components/generic/build-text.field.dart';
 import 'package:wheathertest/components/generic/elevated-button-widget.dart';
-import 'package:wheathertest/ui/registre.dart';
-import 'package:wheathertest/ui/wather-list.dart';
-import 'package:wheathertest/util/navegacion/navegation.dart';
 import '../bloc/user/user_state.dart';
 import '../components/generic/show-dialog.dart';
 import '../components/generic/while-you-wait.dart';
 import '../data/models/user/login_dto.dart';
-import '../domain/entities/user/login.dart';
 import '../generated/l10n.dart';
+import '../util/navegation/navegation.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -50,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               },
               login: (login){
                 if (login.statusCode == 200 || login.statusCode == 201){
-                  Navegacion().goToFull(context, WeatherTabView());
+                  NavigationService.goToReplacement(context, '/weather-tab-lib-view');
                 }else{
                   Navigator.of(context).push(
                     ShowDialog().dialogBuilder(context, s.aviso, s.credencialesincorrectas),
@@ -105,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                     ElevatedButtonWidget(s.button, _login),
                     const SizedBox(height: 30,),
                     InkWell(
-                      onTap: () => Navegacion().goTo(context, RegistrePage()),
+                      onTap: () => NavigationService.goTo(context, '/registre'),
                       child: Text(
                         s.aunnotienescuenta,
                         style: const TextStyle(

@@ -2,8 +2,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wheathertest/domain/entities/forecast/do-you-know.dart';
 
-import '../data/models/forecast/do_you_know_dto.dart';
-import '../domain/entities/forecast/forecast.dart';
+import '../../data/models/forecast/do_you_know_dto.dart';
+import '../../domain/entities/forecast/forecast.dart';
 
 part 'forecast_state.freezed.dart';
 

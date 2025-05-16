@@ -1,7 +1,7 @@
 
 import 'package:http/http.dart' as http;
 import 'package:injector/injector.dart';
-import 'package:wheathertest/bloc/forecast_bloc.dart';
+import 'package:wheathertest/bloc/forecast/forecast_bloc.dart';
 import 'package:wheathertest/bloc/locale/locale_bloc.dart';
 import 'package:wheathertest/bloc/user/user_bloc.dart';
 import 'package:wheathertest/data/datasources/forecast/forecast-datasources.dart';
@@ -17,9 +17,9 @@ import '../data/api-client-interfaz.dart';
 import '../data/repositories/forecast/forecast-respository-impl.dart';
 import '../domain/repositories/forecast/forecast-repository.dart';
 import '../domain/use-cases/forecast/get-forecast-use-case.dart';
-import '../domain/use-cases/user/get-user-login-use-case.dart';
-import '../domain/use-cases/user/get-user-registre-use-case.dart';
-import '../use-cases/what-hourIs-now.dart';
+import '../domain/use-cases/user/user-login-use-case.dart';
+import '../domain/use-cases/user/user-registre-use-case.dart';
+import '../domain/use-cases/forecast/what-hourIs-now.dart';
 
 void setupDI() {
   final injector = Injector.appInstance;

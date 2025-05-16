@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injector/injector.dart';
-import 'package:wheathertest/bloc/forecast_event.dart';
 import 'package:wheathertest/components/text/text-standard.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:wheathertest/domain/entities/forecast/hourly.dart';
-import 'package:wheathertest/extension-functions/change-temp.dart';
-import 'package:wheathertest/extension-functions/hour-format.dart';
+import 'package:wheathertest/extension-functions/format-temperature.dart';
+import 'package:wheathertest/extension-functions/format-hour.dart';
 
-import '../../bloc/forecast_bloc.dart';
-import '../../bloc/forecast_state.dart';
+import '../../bloc/forecast/forecast_bloc.dart';
+import '../../bloc/forecast/forecast_event.dart';
+import '../../bloc/forecast/forecast_state.dart';
 import '../../data/models/forecast/hourly_dto.dart';
 import '../../generated/l10n.dart';
 import 'item-forecast-hour.dart';

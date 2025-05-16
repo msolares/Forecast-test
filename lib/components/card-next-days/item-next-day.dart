@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wheathertest/components/text/text-standard.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:wheathertest/extension-functions/change-temp.dart';
-import 'package:wheathertest/extension-functions/days-format.dart';
+import 'package:wheathertest/extension-functions/format-temperature.dart';
+import 'package:wheathertest/extension-functions/format-days.dart';
 
 class ItemNextDays extends StatelessWidget {
   String time;
